@@ -45,6 +45,8 @@ public class TouchDelegateTestActivity extends AppCompatActivity {
                 Log.e("wh_debug", "click me 2");
             }
         });
+        // #1
+        click_me2.setVisibility(View.GONE);
         click_me = (Button)findViewById(R.id.click_me);
         click_me.setOnClickListener(new View.OnClickListener() {
             @Override
