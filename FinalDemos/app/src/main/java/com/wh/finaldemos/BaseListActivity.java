@@ -2,10 +2,11 @@ package com.wh.finaldemos;
 
 import android.app.ListActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+
+import com.whlib.alib.Log.XLog;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,6 +17,8 @@ import java.util.Map;
  * Created by wanghui5-s on 2015/11/18.
  */
 public abstract class BaseListActivity extends ListActivity {
+
+    XLog logger = new XLog(BaseListActivity.class, true, true);
 
     private List<Demo> demos;
     private DemoGroup demoGroup;
@@ -48,7 +51,7 @@ public abstract class BaseListActivity extends ListActivity {
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
-        Log.d("BaseListActivity", "onListItemClick:" + getData().get(position));
+        logger.d("onListItemClick:" + getData().get(position));
         demos.get(position).start();
     }
 

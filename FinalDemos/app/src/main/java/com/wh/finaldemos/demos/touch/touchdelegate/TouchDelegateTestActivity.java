@@ -6,7 +6,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -16,8 +15,11 @@ import android.view.ViewTreeObserver;
 import android.widget.Button;
 
 import com.wh.finaldemos.R;
+import com.whlib.alib.Log.XLog;
 
 public class TouchDelegateTestActivity extends AppCompatActivity {
+
+    XLog logger = new XLog(TouchDelegateTestActivity.class, true, true);
 
     private Button click_me;
 
@@ -42,7 +44,7 @@ public class TouchDelegateTestActivity extends AppCompatActivity {
         click_me2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.e("wh_debug", "click me 2");
+                logger.e("click me 2");
             }
         });
         // #1
@@ -51,7 +53,7 @@ public class TouchDelegateTestActivity extends AppCompatActivity {
         click_me.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.e("wh_debug", "click me 1");
+                logger.e("click me 1");
             }
         });
         click_me.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
@@ -60,13 +62,13 @@ public class TouchDelegateTestActivity extends AppCompatActivity {
                 Rect delegateRegion = new Rect();
                 View parent = (View)click_me.getParent();
                 delegateRegion.set(0, 0, parent.getWidth(), parent.getHeight());
-                Log.e("wh_debug", "touchDelegate rect:" + delegateRegion);
+                logger.e("touchDelegate rect:" + delegateRegion);
                 TouchDelegate touchDelegate = new TouchDelegate(delegateRegion, click_me);
                 parent.setTouchDelegate(touchDelegate);
                 parent.setOnTouchListener(new View.OnTouchListener() {
                     @Override
                     public boolean onTouch(View v, MotionEvent event) {
-                        Log.e("wh_debug", "parent onTouch");
+                        logger.e("parent onTouch");
                         return false;
                     }
                 });
