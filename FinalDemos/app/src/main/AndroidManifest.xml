@@ -20,12 +20,17 @@
             android:name=".demos.touch.touchdelegate.TouchDelegateTestActivity"
             android:label="TouchDelegateTestActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".demos.trys.try1.Try1Activity" android:label="Try1Activity"></activity>
+        <activity
+            android:name=".demos.trys.try1.Try1Activity"
+            android:label="Try1Activity" />
         <activity android:name=".demos.touch.TouchDemosListActivity" />
         <activity android:name=".demos.trys.TryDemosListActivity" />
         <activity android:name=".demos.customview.CustomViewListActivity" />
         <activity android:name=".demos.whlib.WhlibDemosListActivity" />
-        <activity android:name=".demos.whlib.testjlibrun.TestJlibRunDemoActivity" android:label="TestJlibRunDemoActivity"></activity>
+        <activity
+            android:name=".demos.whlib.testjlibrun.TestJlibRunDemoActivity"
+            android:label="TestJlibRunDemoActivity" />
+        <activity android:name=".demos.customview.testcustomshapeimageview.TestCustomShapeImageViewActivity" android:label="TestCustomShapeImageViewActivity"></activity>
     </application>
 
 </manifest>
