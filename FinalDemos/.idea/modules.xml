@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FinalDemos.iml" filepath="$PROJECT_DIR$/FinalDemos.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/whalib/whalib.iml" filepath="$PROJECT_DIR$/whalib/whalib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/whjlib/whjlib.iml" filepath="$PROJECT_DIR$/whjlib/whjlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/whtestjavalib/whtestjavalib.iml" filepath="$PROJECT_DIR$/whtestjavalib/whtestjavalib.iml" />
     </modules>
   </component>
 </project>

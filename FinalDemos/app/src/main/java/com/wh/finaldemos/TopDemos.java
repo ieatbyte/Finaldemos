@@ -8,7 +8,8 @@ public class TopDemos extends DemoGroup {
     private final Class[] topDemos = new Class[] {
             com.wh.finaldemos.demos.touch.TouchDemos.class,
             com.wh.finaldemos.demos.trys.TryDemos.class,
-            com.wh.finaldemos.demos.customview.CustomViewDemos.class
+            com.wh.finaldemos.demos.customview.CustomViewDemos.class,
+            com.wh.finaldemos.demos.whlib.WhlibDemos.class
     };
 
     @Override
