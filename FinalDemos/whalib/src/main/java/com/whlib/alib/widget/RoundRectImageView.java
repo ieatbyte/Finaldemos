@@ -7,9 +7,6 @@ import android.util.AttributeSet;
 
 /**
  * Created by wanghui5-s on 2015/11/26.
- * <p/>
- * Conclusion:
- * #1:
  */
 public class RoundRectImageView extends CustomShapeImageView {
 
