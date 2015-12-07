@@ -52,6 +52,10 @@
         <activity
             android:name=".demos.media.video.surfaceview.simpleplay.SurfaceViewPlayMp4DemoActivity"
             android:label="@string/title_activity_surface_view_play_mp4_demo"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".demos.media.video.textureview.simpleplay.TextureViewPlayMp4Activity"
+            android:label="@string/title_activity_texture_view_play_mp4"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
