@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/black_mask.9.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/details_shadow.9.png" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/lenna.png" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/raw/gen_sliders.mp4" charset="GBK" />
     <file url="file://$PROJECT_DIR$/whalib/src/main/java/com/whlib/alib/Log/XLog.java" charset="UTF-8" />

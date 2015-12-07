@@ -12,9 +12,47 @@
     tools:context="com.wh.finaldemos.demos.media.video.surfaceview.simpleplay.SurfaceViewPlayMp4DemoActivity"
     tools:showIn="@layout/activity_surface_view_play_mp4_demo">
 
-    <SurfaceView
-        android:id="@+id/playSurfaceView"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:layout_centerInParent="true"/>
+    <Button
+        android:id="@+id/toggle_mask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="toggle mask"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toggle_mask"
+        android:background="#EEDD22">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#EE2222"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="#22EEFF" />
+
+            <!--<SurfaceView-->
+                <!--android:id="@+id/playSurfaceView"-->
+                <!--android:layout_width="200dp"-->
+                <!--android:layout_height="100dp"-->
+                <!--android:layout_centerInParent="true" />-->
+
+            <RelativeLayout
+                android:id="@+id/playSurfaceViewContainer"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:background="#9922DD"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1000dp"
+                android:background="#22EEFF" />
+
+        </LinearLayout>
+
+    </ScrollView>
 </RelativeLayout>

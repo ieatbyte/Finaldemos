@@ -9,7 +9,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
+import com.wh.finaldemos.App;
 import com.wh.finaldemos.R;
 import com.wh.finaldemos.Utils;
 
@@ -20,6 +25,10 @@ public class SurfaceViewPlayMp4DemoActivity extends AppCompatActivity {
     SurfaceView mPlaySurfaceView;
     SurfaceHolder mSurfaceHolder;
     MediaPlayer mMediaPlayer;
+    RelativeLayout mSurfaceContainer;
+    ImageView mVideoMaskTop;
+    ImageView mVideoMaskBottom;
+    Button mToggleMask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +46,25 @@ public class SurfaceViewPlayMp4DemoActivity extends AppCompatActivity {
             }
         });
 
-        mPlaySurfaceView = (SurfaceView) findViewById(R.id.playSurfaceView);
+        //mPlaySurfaceView = (SurfaceView) findViewById(R.id.playSurfaceView);
+        mSurfaceContainer = (RelativeLayout) findViewById(R.id.playSurfaceViewContainer);
+        mPlaySurfaceView = new SurfaceView(SurfaceViewPlayMp4DemoActivity.this);
+        //mPlaySurfaceView.setBackgroundColor(Color.BLACK);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
+        mSurfaceContainer.addView(mPlaySurfaceView, layoutParams);
+        mVideoMaskTop = new ImageView(SurfaceViewPlayMp4DemoActivity.this);
+        RelativeLayout.LayoutParams layoutParamsMask = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Utils.convertDpToPixel(App.context, 40));
+        layoutParamsMask.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+        mVideoMaskTop.setBackgroundResource(R.drawable.black_mask);
+        mVideoMaskTop.setScaleY(-1f);
+        mSurfaceContainer.addView(mVideoMaskTop, layoutParamsMask);
+        mVideoMaskBottom = new ImageView(SurfaceViewPlayMp4DemoActivity.this);
+        layoutParamsMask.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+        mVideoMaskBottom.setBackgroundResource(R.drawable.black_mask);
+        RelativeLayout.LayoutParams layoutParamsMaskBottom = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Utils.convertDpToPixel(App.context, 40));
+        layoutParamsMaskBottom.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        mSurfaceContainer.addView(mVideoMaskBottom, layoutParamsMaskBottom);
         mSurfaceHolder = mPlaySurfaceView.getHolder();
         mSurfaceHolder.addCallback(new SurfaceHolder.Callback() {
             @Override
@@ -55,7 +82,14 @@ public class SurfaceViewPlayMp4DemoActivity extends AppCompatActivity {
 
             }
         });
-
+        mToggleMask = (Button) findViewById(R.id.toggle_mask);
+        mToggleMask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mVideoMaskTop.setVisibility(mVideoMaskTop.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE);
+                mVideoMaskBottom.setVisibility(mVideoMaskBottom.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE);
+            }
+        });
     }
 
     private void playVideo() {
