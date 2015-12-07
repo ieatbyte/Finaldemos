@@ -67,6 +67,7 @@ public class SurfaceViewPlayMp4DemoActivity extends AppCompatActivity {
             mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                 @Override
                 public void onPrepared(MediaPlayer mp) {
+                    mMediaPlayer.setLooping(true);
                     mMediaPlayer.start();
                 }
             });

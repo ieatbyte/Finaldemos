@@ -1,5 +1,7 @@
 package com.wh.finaldemos.demos.media.video.textureview.simpleplay;
 
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.graphics.SurfaceTexture;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -20,6 +22,7 @@ public class TextureViewPlayMp4Activity extends AppCompatActivity {
 
     TextureView mPlayTextureView;
     MediaPlayer mMediaPlayer;
+    ObjectAnimator mObjectAnimator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,7 @@ public class TextureViewPlayMp4Activity extends AppCompatActivity {
                     mMediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                         @Override
                         public void onPrepared(MediaPlayer mp) {
+                            mMediaPlayer.setLooping(true);
                             mMediaPlayer.start();
                         }
                     });
@@ -73,6 +77,22 @@ public class TextureViewPlayMp4Activity extends AppCompatActivity {
 
             }
         });
+        PropertyValuesHolder pvhX = PropertyValuesHolder.ofFloat("scaleX", 0.3f, 1.5f);
+        PropertyValuesHolder pvhY = PropertyValuesHolder.ofFloat("scaleY", 0.3f, 1.5f);
+        PropertyValuesHolder pvhRotate = PropertyValuesHolder.ofFloat("rotationX", 0f, 360f);
+        mObjectAnimator = ObjectAnimator.ofPropertyValuesHolder(mPlayTextureView, pvhX, pvhY, pvhRotate);
+        mObjectAnimator.setRepeatCount(ObjectAnimator.INFINITE);
+        mObjectAnimator.setRepeatMode(ObjectAnimator.REVERSE);
+        mObjectAnimator.setDuration(2000);
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+
+        if (hasFocus) {
+            mObjectAnimator.start();
+        }
     }
 
     @Override
