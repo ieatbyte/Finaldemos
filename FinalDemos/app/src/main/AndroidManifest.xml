@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wh.finaldemos">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -30,7 +36,19 @@
         <activity
             android:name=".demos.whlib.testjlibrun.TestJlibRunDemoActivity"
             android:label="TestJlibRunDemoActivity" />
-        <activity android:name=".demos.customview.testcustomshapeimageview.TestCustomShapeImageViewActivity" android:label="TestCustomShapeImageViewActivity"></activity>
+        <activity
+            android:name=".demos.customview.testcustomshapeimageview.TestCustomShapeImageViewActivity"
+            android:label="TestCustomShapeImageViewActivity" />
+        <activity
+            android:name=".demos.graphic2d.palletetest.PalleteCheckShineActivity"
+            android:label="@string/title_activity_pallete_check_shine"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".demos.graphic2d.Graphic2DDemosListActivity" />
+        <activity android:name=".demos.media.MediaDemosListActivity" />
+        <activity
+            android:name=".demos.media.video.videoview.simplePlay.VideoViewSimplePlayActivity"
+            android:label="@string/title_activity_video_view_simple_play"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

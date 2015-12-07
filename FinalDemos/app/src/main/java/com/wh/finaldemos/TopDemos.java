@@ -9,7 +9,9 @@ public class TopDemos extends DemoGroup {
             com.wh.finaldemos.demos.touch.TouchDemos.class,
             com.wh.finaldemos.demos.trys.TryDemos.class,
             com.wh.finaldemos.demos.customview.CustomViewDemos.class,
-            com.wh.finaldemos.demos.whlib.WhlibDemos.class
+            com.wh.finaldemos.demos.whlib.WhlibDemos.class,
+            com.wh.finaldemos.demos.graphic2d.Graphic2DDemos.class,
+            com.wh.finaldemos.demos.media.MediaDemos.class
     };
 
     @Override
