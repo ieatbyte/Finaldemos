@@ -61,7 +61,9 @@
         <activity android:name=".demos.media.video.textureview.camerapreview.CameraPreviewWithTextureViewActivity" />
         <activity android:name=".demos.androidviews.AndroidViewDemosActivity" />
         <activity android:name=".demos.androidviews.NestedScrollView.NestedScrollViewDemosActivity" />
-        <activity android:name=".demos.androidviews.NestedScrollView.simpleuse.NestedScrollViewSimpeUseDemoActivity"></activity>
+        <activity android:name=".demos.androidviews.NestedScrollView.simpleuse.NestedScrollViewSimpeUseDemoActivity" />
+        <activity android:name=".demos.androidviews.RecycleView.RecycleViewDemosActivity"/>
+        <activity android:name=".demos.androidviews.RecycleView.simpleuse.RecycleViewSimpleUseActivity"></activity>
     </application>
 
 </manifest>

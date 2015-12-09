@@ -2,6 +2,7 @@ package com.wh.finaldemos.demos.androidviews;
 
 import com.wh.finaldemos.DemoGroup;
 import com.wh.finaldemos.demos.androidviews.NestedScrollView.NestedScrollViewDemos;
+import com.wh.finaldemos.demos.androidviews.RecycleView.RecyleViewDemos;
 
 /**
  * Created by wanghui5-s on 2015/12/9.
@@ -12,7 +13,8 @@ import com.wh.finaldemos.demos.androidviews.NestedScrollView.NestedScrollViewDem
 public class AndroidViewDemos extends DemoGroup {
 
     private final Class[] demos = new Class[]{
-            NestedScrollViewDemos.class
+            NestedScrollViewDemos.class,
+            RecyleViewDemos.class
     };
 
     @Override
