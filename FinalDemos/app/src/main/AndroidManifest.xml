@@ -58,7 +58,10 @@
             android:name=".demos.media.video.textureview.simpleplay.TextureViewPlayMp4Activity"
             android:label="@string/title_activity_texture_view_play_mp4"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".demos.media.video.textureview.camerapreview.CameraPreviewWithTextureViewActivity"></activity>
+        <activity android:name=".demos.media.video.textureview.camerapreview.CameraPreviewWithTextureViewActivity" />
+        <activity android:name=".demos.androidviews.AndroidViewDemosActivity" />
+        <activity android:name=".demos.androidviews.NestedScrollView.NestedScrollViewDemosActivity" />
+        <activity android:name=".demos.androidviews.NestedScrollView.simpleuse.NestedScrollViewSimpeUseDemoActivity"></activity>
     </application>
 
 </manifest>
