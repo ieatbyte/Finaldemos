@@ -1,13 +1,14 @@
 package com.whlib.alib.graphics;
 
 import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
 
 /**
  * Created by wanghui5-s on 2015/11/12.
  */
 public class BitmapHelper {
 
-    public static int[] getBitmapPixels(Bitmap bitmap, int x, int y, int width, int height) {
+    public static int[] getBitmapPixels(@NonNull Bitmap bitmap, int x, int y, int width, int height) {
         int[] pixels = new int[bitmap.getWidth() * bitmap.getHeight()];
         bitmap.getPixels(pixels, 0, bitmap.getWidth(), x, y,
                 width, height);
