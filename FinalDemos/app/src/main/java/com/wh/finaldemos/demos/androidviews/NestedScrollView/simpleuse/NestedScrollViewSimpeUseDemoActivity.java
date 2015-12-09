@@ -1,11 +1,11 @@
 package com.wh.finaldemos.demos.androidviews.NestedScrollView.simpleuse;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
+import com.wh.finaldemos.BaseDemoActivity;
 import com.wh.finaldemos.R;
 
-public class NestedScrollViewSimpeUseDemoActivity extends AppCompatActivity {
+public class NestedScrollViewSimpeUseDemoActivity extends BaseDemoActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
