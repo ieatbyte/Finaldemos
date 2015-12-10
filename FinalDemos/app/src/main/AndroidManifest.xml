@@ -62,8 +62,9 @@
         <activity android:name=".demos.androidviews.AndroidViewDemosActivity" />
         <activity android:name=".demos.androidviews.NestedScrollView.NestedScrollViewDemosActivity" />
         <activity android:name=".demos.androidviews.NestedScrollView.simpleuse.NestedScrollViewSimpeUseDemoActivity" />
-        <activity android:name=".demos.androidviews.RecycleView.RecycleViewDemosActivity"/>
-        <activity android:name=".demos.androidviews.RecycleView.simpleuse.RecycleViewSimpleUseActivity"></activity>
+        <activity android:name=".demos.androidviews.RecycleView.RecycleViewDemosActivity" />
+        <activity android:name=".demos.androidviews.RecycleView.simpleuse.RecycleViewSimpleUseActivity" />
+        <activity android:name=".demos.androidviews.RecycleView.imageslider.ImageSliderDemoActivity"></activity>
     </application>
 
 </manifest>
