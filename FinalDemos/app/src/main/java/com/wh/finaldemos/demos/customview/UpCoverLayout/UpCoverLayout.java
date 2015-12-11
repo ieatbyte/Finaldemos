@@ -90,37 +90,59 @@ public class UpCoverLayout extends FrameLayout{
         mRedefineTopAnchor = mToCoverView.getMeasuredHeight();
         mRedefineTopMostEdge = mActionView.getMeasuredHeight();
         mAnimateAnchor = mToCoverView.getMeasuredHeight() / 3 * 2;
+
+        // remeasure coverview
+        int redefinedCoverViewHeight = mCoverView.getMeasuredHeight();
+        if (mState == STATE_NO_COVERED) {
+            redefinedCoverViewHeight = getMeasuredHeight() - mRedefineTopAnchor;
+        } else if (mState == STATE_COVERED) {
+            redefinedCoverViewHeight = getMeasuredHeight() - mRedefineTopMostEdge;
+        } else if (mState == STATE_DRAGGING) {
+            int rTop = getRedeinedTopWhenDraagging();
+            redefinedCoverViewHeight = getMeasuredHeight() - rTop;
+        } else if (mState == STATE_ANIMATING_TO_TARGET_POS) {
+            redefinedCoverViewHeight = getMeasuredHeight() - mAnimatingTopValue;
+        }
+        mCoverView.measure(MeasureSpec.makeMeasureSpec(getMeasuredWidth(), MeasureSpec.EXACTLY),
+                MeasureSpec.makeMeasureSpec(redefinedCoverViewHeight, MeasureSpec.EXACTLY));
+    }
+
+    private int getRedeinedTopWhenDraagging() {
+        int redefinedTop = mDraggingAnchorY + mDraggingDeltaY;
+        if (redefinedTop <= mRedefineTopMostEdge) {
+            redefinedTop = mRedefineTopMostEdge;
+        } else if (redefinedTop >= mRedefineTopAnchor) {
+            redefinedTop = mRedefineTopAnchor;
+        }
+        return redefinedTop;
     }
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
 
+        int coverLeft = 0; //mCoverView.getLeft();
+        int coverRight = getMeasuredWidth(); //mCoverView.getRight();
         if (mState == STATE_NO_COVERED) {
             mActionView.setVisibility(View.INVISIBLE);
-            int redefineCoverViewLeft = mCoverView.getLeft();
+            int redefineCoverViewLeft = coverLeft;
             int redefineCoverViewTop = mRedefineTopAnchor;
-            int redefineCoverViewRight = mCoverView.getRight();
+            int redefineCoverViewRight = coverRight;
             int redefineCoverViewBottom = getMeasuredHeight();
             mCoverView.layout(redefineCoverViewLeft, redefineCoverViewTop, redefineCoverViewRight, redefineCoverViewBottom);
         } else if (mState == STATE_COVERED) {
             mActionView.setVisibility(View.VISIBLE);
             mActionView.setAlpha(1f);
-            mCoverView.layout(mCoverView.getLeft(), mRedefineTopMostEdge, mCoverView.getRight(), getMeasuredHeight());
+            mCoverView.layout(coverLeft, mRedefineTopMostEdge, coverRight, getMeasuredHeight());
         } else if (mState == STATE_DRAGGING) {
             mActionView.setVisibility(View.VISIBLE);
-            int redefinedTop = mDraggingAnchorY + mDraggingDeltaY;
-            if (redefinedTop <= mRedefineTopMostEdge) {
-                redefinedTop = mRedefineTopMostEdge;
-            } else if (redefinedTop >= mRedefineTopAnchor) {
-                redefinedTop = mRedefineTopAnchor;
-            }
+            int redefinedTop = getRedeinedTopWhenDraagging();
             mActionView.setAlpha(1f * ((float)(mRedefineTopAnchor - redefinedTop) / (float)(mRedefineTopAnchor - mRedefineTopMostEdge)));
-            mCoverView.layout(mCoverView.getLeft(), redefinedTop, mCoverView.getRight(), getMeasuredHeight());
+            mCoverView.layout(coverLeft, redefinedTop, coverRight, getMeasuredHeight());
         } else if (mState == STATE_ANIMATING_TO_TARGET_POS) {
             mActionView.setVisibility(View.VISIBLE);
             mActionView.setAlpha(1f * ((float)(mRedefineTopAnchor - mAnimatingTopValue) / (float)(mRedefineTopAnchor - mRedefineTopMostEdge)));
-            mCoverView.layout(mCoverView.getLeft(), mAnimatingTopValue, mCoverView.getRight(), getMeasuredHeight());
+            mCoverView.layout(coverLeft, mAnimatingTopValue, coverRight, getMeasuredHeight());
         }
         logger.d("layoutx top:" + mCoverView.getTop());
     }
@@ -153,7 +175,7 @@ public class UpCoverLayout extends FrameLayout{
             case MotionEvent.ACTION_MOVE: {
                 int deltaY = y - mInitialDownY;
                 logger.d("onInterceptTouchEvent ACTION_MOVE deltaY:" + deltaY);
-                if(deltaY < 0 && mState == STATE_NO_COVERED && Math.abs(deltaY) >= mTouchSlop) {
+                if(mState == STATE_NO_COVERED && Math.abs(deltaY) >= mTouchSlop) {
                     intercepted = true;
                 } else if (deltaY > 0 && mState == STATE_COVERED && Math.abs(deltaY) >= mTouchSlop) {
                     boolean canSV = ViewCompat.canScrollVertically(mNestedScrollViewWrapper.getView(), -deltaY);
@@ -174,6 +196,13 @@ public class UpCoverLayout extends FrameLayout{
             }
         }
         return intercepted;
+    }
+
+    @Override
+    public void requestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+        if (mState != STATE_NO_COVERED) {
+            super.requestDisallowInterceptTouchEvent(disallowIntercept);
+        }
     }
 
     @Override

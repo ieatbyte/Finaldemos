@@ -23,7 +23,7 @@ public class UpCoverLayoutUseDemoActivity extends BaseDemoActivity implements Ad
 
         mRecyclerView = (RecyclerView) findViewById(R.id.upcover_nested_scrollivew);
         SimpleAdapter sa = new SimpleAdapter();
-        sa.setItemCount(100);
+        sa.setItemCount(12);
         sa.setOnItemClickListener(this);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.addItemDecoration(new SimpleDecoration());
