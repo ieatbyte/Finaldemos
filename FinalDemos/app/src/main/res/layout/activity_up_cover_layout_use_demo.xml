@@ -26,17 +26,37 @@
                 android:layout_height="match_parent"
                 android:background="#9922DD"/>
 
+            <Button
+                android:id="@+id/upcover_cover_but1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OK1"
+                android:layout_alignParentLeft="true"
+                android:layout_alignBottom="@id/playSurfaceViewContainer"
+                android:onClick="onButtonClick"/>
+
+            <Button
+                android:id="@+id/upcover_cover_but2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cancel1"
+                android:layout_alignParentRight="true"
+                android:layout_alignBottom="@id/playSurfaceViewContainer"
+                android:onClick="onButtonClick"/>
+
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/upcover_cover"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:clickable="true"
             android:background="@drawable/bg_gradient1">
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/upcover_nested_scrollivew"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+
         </RelativeLayout>
 
         <RelativeLayout
@@ -44,8 +64,23 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@color/colorWarmRed3"
-            android:visibility="invisible">
+            android:visibility="gone">
 
+            <Button
+                android:id="@+id/upcover_actionlayout_but1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OK2"
+                android:layout_alignParentLeft="true"
+                android:onClick="onButtonClick"/>
+
+            <Button
+                android:id="@+id/upcover_actionlayout_but2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cancel2"
+                android:layout_alignParentRight="true"
+                android:onClick="onButtonClick"/>
         </RelativeLayout>
 
     </com.wh.finaldemos.demos.customview.UpCoverLayout.UpCoverLayout>

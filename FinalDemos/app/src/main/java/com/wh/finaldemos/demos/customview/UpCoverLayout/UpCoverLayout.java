@@ -124,7 +124,7 @@ public class UpCoverLayout extends FrameLayout{
         int coverLeft = 0; //mCoverView.getLeft();
         int coverRight = getMeasuredWidth(); //mCoverView.getRight();
         if (mState == STATE_NO_COVERED) {
-            mActionView.setVisibility(View.INVISIBLE);
+            mActionView.setVisibility(View.GONE);
             int redefineCoverViewLeft = coverLeft;
             int redefineCoverViewTop = mRedefineTopAnchor;
             int redefineCoverViewRight = coverRight;

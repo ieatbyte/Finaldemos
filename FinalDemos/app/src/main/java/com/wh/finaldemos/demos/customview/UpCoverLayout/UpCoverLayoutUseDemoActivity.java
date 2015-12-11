@@ -9,6 +9,7 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -17,10 +18,13 @@ import com.wh.finaldemos.R;
 import com.wh.finaldemos.Utils;
 import com.wh.finaldemos.demos.androidviews.RecycleView.adapters.SimpleAdapter;
 import com.wh.finaldemos.demos.androidviews.RecycleView.decorations.SimpleDecoration;
+import com.whlib.alib.Log.XLog;
 
 import java.io.IOException;
 
 public class UpCoverLayoutUseDemoActivity extends BaseDemoActivity implements AdapterView.OnItemClickListener{
+
+    XLog logger = new XLog(UpCoverLayoutUseDemoActivity.class);
 
     RecyclerView mRecyclerView;
 
@@ -65,6 +69,16 @@ public class UpCoverLayoutUseDemoActivity extends BaseDemoActivity implements Ad
 
             }
         });
+    }
+
+    public void onButtonClick(View v) {
+        Button real = null;
+        if (v instanceof Button) {
+            real = (Button) v;
+        }
+        if (real != null) {
+            logger.d("onButtonClick:" + real.getText());
+        }
     }
 
 
