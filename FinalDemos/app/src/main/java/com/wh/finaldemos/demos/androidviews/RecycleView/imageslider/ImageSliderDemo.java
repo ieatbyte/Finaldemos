@@ -6,7 +6,7 @@ import com.wh.finaldemos.Demo;
  * Created by wanghui5-s on 2015/12/9.
  * <p/>
  * Conclusion:
- * #1:
+ * #1: TMP
  */
 public class ImageSliderDemo extends Demo {
 

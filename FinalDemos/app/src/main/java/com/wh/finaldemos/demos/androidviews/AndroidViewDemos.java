@@ -1,6 +1,7 @@
 package com.wh.finaldemos.demos.androidviews;
 
 import com.wh.finaldemos.DemoGroup;
+import com.wh.finaldemos.demos.androidviews.CoordinatorLayout.CoordinatorLayoutDemos;
 import com.wh.finaldemos.demos.androidviews.NestedScrollView.NestedScrollViewDemos;
 import com.wh.finaldemos.demos.androidviews.RecycleView.RecyleViewDemos;
 
@@ -14,7 +15,8 @@ public class AndroidViewDemos extends DemoGroup {
 
     private final Class[] demos = new Class[]{
             NestedScrollViewDemos.class,
-            RecyleViewDemos.class
+            RecyleViewDemos.class,
+            CoordinatorLayoutDemos.class
     };
 
     @Override
