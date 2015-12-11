@@ -68,7 +68,9 @@
         <activity android:name=".demos.androidviews.CoordinatorLayout.CoordinatorLayoutDemosActivity" />
         <activity android:name=".demos.androidviews.CoordinatorLayout.custombehavior.CustomBehaviorActivity" />
         <activity android:name=".demos.androidviews.CoordinatorLayout.customcoordinator.CustomCoordinatorActivity" />
-        <activity android:name=".demos.customview.UpCoverLayout.UpCoverLayoutUseDemoActivity"></activity>
+        <activity android:name=".demos.customview.UpCoverLayout.UpCoverLayoutUseDemoActivity" />
+        <activity android:name=".demos.uiproperty.UiPropertyDemosActivity" />
+        <activity android:name=".demos.uiproperty.viewgroupvisibility.ViewGroupVisibilityDemoActivity"></activity>
     </application>
 
 </manifest>

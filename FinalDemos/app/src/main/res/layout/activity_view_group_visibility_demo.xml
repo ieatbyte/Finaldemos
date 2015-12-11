@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.wh.finaldemos.demos.uiproperty.viewgroupvisibility.ViewGroupVisibilityDemoActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/viewgroupvis_btn_wrapper"
+        android:layout_width="300dp"
+        android:layout_height="500dp"
+        android:background="@color/colorPositiveGreen3">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ok1"
+            android:onClick="onButtonClick"/>
+
+    </RelativeLayout>
+</RelativeLayout>
