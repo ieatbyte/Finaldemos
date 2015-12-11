@@ -1,6 +1,7 @@
 package com.wh.finaldemos.demos.customview;
 
 import com.wh.finaldemos.DemoGroup;
+import com.wh.finaldemos.demos.customview.UpCoverLayout.UpCoverLayoutUseDemo;
 import com.wh.finaldemos.demos.customview.testcustomshapeimageview.TestCustomShapeImageViewDemo;
 
 /**
@@ -9,7 +10,8 @@ import com.wh.finaldemos.demos.customview.testcustomshapeimageview.TestCustomSha
 public class CustomViewDemos extends DemoGroup {
 
     private final Class[] demos = new Class[]{
-            TestCustomShapeImageViewDemo.class
+            TestCustomShapeImageViewDemo.class,
+            UpCoverLayoutUseDemo.class
     };
 
     @Override

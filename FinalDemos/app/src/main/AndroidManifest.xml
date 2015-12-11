@@ -67,7 +67,8 @@
         <activity android:name=".demos.androidviews.RecycleView.imageslider.ImageSliderDemoActivity" />
         <activity android:name=".demos.androidviews.CoordinatorLayout.CoordinatorLayoutDemosActivity" />
         <activity android:name=".demos.androidviews.CoordinatorLayout.custombehavior.CustomBehaviorActivity" />
-        <activity android:name=".demos.androidviews.CoordinatorLayout.customcoordinator.CustomCoordinatorActivity"></activity>
+        <activity android:name=".demos.androidviews.CoordinatorLayout.customcoordinator.CustomCoordinatorActivity" />
+        <activity android:name=".demos.customview.UpCoverLayout.UpCoverLayoutUseDemoActivity"></activity>
     </application>
 
 </manifest>

@@ -10,4 +10,8 @@
     <color name="colorPositiveGreen1">#B3EE3A</color>
     <color name="colorPositiveGreen2">#98FB98</color>
     <color name="colorPositiveGreen3">#7EC0EE</color>
+
+    <color name="colorWarmRed1">#FFB6C1</color>
+    <color name="colorWarmRed2">#FFBBFF</color>
+    <color name="colorWarmRed3">#FF6347</color>
 </resources>
