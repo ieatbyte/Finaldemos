@@ -13,6 +13,7 @@
         android:layout_width="300dp"
         android:layout_height="400dp"
         android:background="#000000">
+
         <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -20,40 +21,60 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/bg_gradient1">
+                android:background="@drawable/bg_gradient1"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onButtonClick"
+                        android:text="nestedbut1" />
+                </RelativeLayout>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="textO1"/>
+                    android:text="textO1" />
+
                 <android.support.v4.widget.NestedScrollView
                     android:layout_width="200dp"
                     android:layout_height="100dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:background="@drawable/bg_gradient2">
+                        android:background="@drawable/bg_gradient2"
+                        android:orientation="vertical">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="textI1"/>
+                            android:text="textI1" />
+
                         <View
                             android:layout_width="match_parent"
-                            android:layout_height="300dp"/>
+                            android:layout_height="300dp" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="textI2"/>
+                            android:text="textI2" />
                     </LinearLayout>
                 </android.support.v4.widget.NestedScrollView>
+
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1000dp"/>
+                    android:layout_height="1000dp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="textO2"/>
+                    android:text="textO2" />
             </LinearLayout>
 
         </android.support.v4.widget.NestedScrollView>

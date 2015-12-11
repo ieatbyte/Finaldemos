@@ -26,6 +26,6 @@ public class ViewGroupVisibilityDemoActivity extends BaseDemoActivity {
         if (real != null) {
             logger.d("onButtonClick:" + real.getText());
         }
-        findViewById(R.id.viewgroupvis_btn_wrapper).setVisibility(View.GONE);
+        findViewById(R.id.viewgroupvis_btn_wrapper).setVisibility(View.INVISIBLE);
     }
 }

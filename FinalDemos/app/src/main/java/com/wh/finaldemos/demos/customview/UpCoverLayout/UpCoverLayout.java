@@ -167,7 +167,7 @@ public class UpCoverLayout extends FrameLayout{
         boolean intercepted = false;
         switch (action) {
             case MotionEvent.ACTION_DOWN: {
-                //logger.d("onInterceptTouchEvent ACTION_DOWN y:" + y);
+                logger.d("onInterceptTouchEvent ACTION_DOWN y:" + y);
                 mInitialDownY = y;
                 mLastTouchY = y;
                 break;
@@ -195,6 +195,7 @@ public class UpCoverLayout extends FrameLayout{
                 break;
             }
         }
+        logger.d("onInterceptTouchEvent intercepted:" + intercepted);
         return intercepted;
     }
 
@@ -207,7 +208,7 @@ public class UpCoverLayout extends FrameLayout{
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        //logger.d("onTouchEvent:" + event);
+        logger.d("onTouchEvent:" + event);
         if (mState == STATE_ANIMATING_TO_TARGET_POS) {
             return true;
         }
@@ -244,8 +245,6 @@ public class UpCoverLayout extends FrameLayout{
             case MotionEvent.ACTION_CANCEL: {
                 logger.d("onTouchEvent up or cancel y:" + y);
                 mInitialDownY = 0;
-                //mState = STATE_NO_COVERED; // TODO animate to final position and set real state
-                //requestLayout();
                 if (isCoverReachToTopEdge()) {
                     mState = STATE_COVERED;
                 } else if (isCoverStayOriginPos()) {
