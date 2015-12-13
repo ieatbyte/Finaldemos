@@ -4,6 +4,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -26,6 +27,7 @@ public class UpCoverLayoutUseDemoActivity extends BaseDemoActivity implements Ad
 
     XLog logger = new XLog(UpCoverLayoutUseDemoActivity.class);
 
+    UpCoverLayout mUpCoverLayout;
     RecyclerView mRecyclerView;
 
     SurfaceView mPlaySurfaceView;
@@ -67,6 +69,15 @@ public class UpCoverLayoutUseDemoActivity extends BaseDemoActivity implements Ad
             @Override
             public void surfaceDestroyed(SurfaceHolder holder) {
 
+            }
+        });
+
+        mUpCoverLayout = (UpCoverLayout) findViewById(R.id.upcoverlayout);
+        mUpCoverLayout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                mUpCoverLayout.logger.d("mUpCoverLayout OnTouchListener onTouch");
+                return true;
             }
         });
     }

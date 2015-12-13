@@ -157,7 +157,7 @@ public class UpCoverLayout extends FrameLayout{
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        //logger.d("onInterceptTouchEvent:" + ev);
+        logger.d("onInterceptTouchEvent:" + ev);
         if (mState == STATE_ANIMATING_TO_TARGET_POS) {
             return true;
         }
