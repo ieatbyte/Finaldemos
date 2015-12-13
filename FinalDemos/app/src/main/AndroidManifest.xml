@@ -71,7 +71,9 @@
         <activity android:name=".demos.customview.testupcoverlayout.UpCoverLayoutUseDemoActivity" />
         <activity android:name=".demos.uiproperty.UiPropertyDemosActivity" />
         <activity android:name=".demos.uiproperty.viewgroupvisibility.ViewGroupVisibilityDemoActivity" />
-        <activity android:name=".demos.touch.touchtest.TouchTestDemoActivity"></activity>
+        <activity android:name=".demos.touch.touchtest.TouchTestDemoActivity" />
+        <activity android:name=".demos.activity.ActivityDemosActivity" />
+        <activity android:name=".demos.activity.lifecycle.ActivityLifeCycleDemoActivity"></activity>
     </application>
 
 </manifest>

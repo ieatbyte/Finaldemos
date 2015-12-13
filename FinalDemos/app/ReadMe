@@ -7,8 +7,9 @@ $When add a DemoGroup(Take TouchDemos for example):
 
 2. new a demogroup class extends DemoGroup(new TouchDemos extends DemoGroup);
 
-3. make a demogroup activity by right click and new empty activity (auto add activity to manifest),
-    change the activity extends BaseListActivity,
+3. make a demogroup activity by right click and new empty activity without gen layout,
+    (auto add activity to manifest),
+    change the activity extends BaseListActivity and remove the default onCreate,
     (new TouchDemosListActivity extends BaseListActivity);
 
 4. override demogroup class getLaunchActivityClass() and return the activity class,
