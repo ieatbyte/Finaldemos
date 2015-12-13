@@ -9,4 +9,31 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.wh.finaldemos.demos.touch.touchtest.TouchTestDemoActivity">
 
+    <com.wh.finaldemos.demos.touch.touchtest.MyView
+        android:id="@+id/myView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:background="#EEDDFF"
+        android:tag="MyView outside" />
+
+    <com.wh.finaldemos.demos.touch.touchtest.MyViewGroup
+        android:id="@+id/myViewGroup"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@id/myView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="#EE22FF"
+        android:tag="MyViewGroup">
+
+        <com.wh.finaldemos.demos.touch.touchtest.MyView
+            android:id="@+id/myViewInside"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:background="@color/colorPositiveGreen3"
+            android:tag="MyView inside" />
+    </com.wh.finaldemos.demos.touch.touchtest.MyViewGroup>
+
 </RelativeLayout>
