@@ -77,7 +77,7 @@ public class UpCoverLayoutUseDemoActivity extends BaseDemoActivity implements Ad
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 mUpCoverLayout.logger.d("mUpCoverLayout OnTouchListener onTouch");
-                return true;
+                return false;
             }
         });
     }

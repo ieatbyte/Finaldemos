@@ -158,7 +158,11 @@ public class UpCoverLayout extends FrameLayout{
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         logger.d("onInterceptTouchEvent:" + ev);
-        if (mState == STATE_ANIMATING_TO_TARGET_POS) {
+        if (mState == STATE_ANIMATING_TO_TARGET_POS
+                // if there is another touch, ignore,
+                // this is maybe tricky,
+                // need improve if subview need multi-touch
+                || ev.getActionIndex() != 0) {
             return true;
         }
         int x = (int)ev.getX();
