@@ -1,7 +1,7 @@
 package com.wh.finaldemos.demos.customview;
 
 import com.wh.finaldemos.DemoGroup;
-import com.wh.finaldemos.demos.customview.UpCoverLayout.UpCoverLayoutUseDemo;
+import com.wh.finaldemos.demos.customview.testupcoverlayout.UpCoverLayoutUseDemo;
 import com.wh.finaldemos.demos.customview.testcustomshapeimageview.TestCustomShapeImageViewDemo;
 
 /**
