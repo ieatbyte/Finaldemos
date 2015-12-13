@@ -1,0 +1,46 @@
+
+#TODO make the steps automatically by studio template
+
+$When add a DemoGroup(Take TouchDemos for example):
+
+1. make sub package in a parent demogroup package(make touch->touchtest in demos);
+
+2. new a demogroup class extends DemoGroup(new TouchDemos extends DemoGroup);
+
+3. make a demogroup activity by right click and new empty activity (auto add activity to manifest),
+    change the activity extends BaseListActivity,
+    (new TouchDemosListActivity extends BaseListActivity);
+
+4. override demogroup class getLaunchActivityClass() and return the activity class,
+    (override getLaunchActivityClass() in TouchDemos and return TouchDemosListActivity.class);
+
+5. override demogroup activity getDemoGroupClass() and return the demogroup class,
+    (override getDemoGroupClass() in TouchDemosListActivity and return TouchDemos.class);
+
+6. in deomgroup class, new demo array, override getSubDemoClasses() and return the demo arrays,
+    (new array Class[] demos in TouchDemos and override getSubDemoClasses() and return demos);
+
+7. add demo group class to parent demogroup,
+    (add TouchDemos.class to TopDemos.topDemos array);
+
+8. Done.
+
+
+
+$When add a Demo (Take TouchTestDemo for example):
+
+1. make sub package in a DemoGroup package(make touchtest package in package touch);
+
+2. new a demo class extends Demo(new TouchTestDemo extends Demo);
+
+3. new a demo activity by right click and new empty activity(auto add activity to manifest),
+    change the activity extends BaseDemoActivity,
+    (new TouchTestDemoActivity extends BaseDemoActivity);
+
+4. override demo class getLaunchActivityClass() and return the activity class,
+    (override getLaunchActivityClass() in TouchTestDemo and return TouchTestDemoActivity.class);
+
+5. add demo class to parent demogroup getSubDemoClasses(),
+    (add TouchTestDemo.class to TouchDemos demos);
+
+6. Done.

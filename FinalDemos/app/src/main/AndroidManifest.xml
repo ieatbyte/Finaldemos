@@ -70,7 +70,8 @@
         <activity android:name=".demos.androidviews.CoordinatorLayout.customcoordinator.CustomCoordinatorActivity" />
         <activity android:name=".demos.customview.testupcoverlayout.UpCoverLayoutUseDemoActivity" />
         <activity android:name=".demos.uiproperty.UiPropertyDemosActivity" />
-        <activity android:name=".demos.uiproperty.viewgroupvisibility.ViewGroupVisibilityDemoActivity"></activity>
+        <activity android:name=".demos.uiproperty.viewgroupvisibility.ViewGroupVisibilityDemoActivity" />
+        <activity android:name=".demos.touch.touchtest.TouchTestDemoActivity"></activity>
     </application>
 
 </manifest>
