@@ -14,7 +14,10 @@ public class DateShowDemoActivity extends BaseDemoActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_date_show_demo);
 
-        showIsToday(getTimeDayAgo(1));
+        showIsToday(getTimeHourAgo(5));
+        showIsYesterDay(getTimeHourAgo(24));
+        showIsTheDayBeforeYesterday(getTimeHourAgo(49));
+        showIsDate(getTimeDayAgo(3));
     }
 
     private long getTimeDayAgo(int day) {
@@ -36,8 +39,25 @@ public class DateShowDemoActivity extends BaseDemoActivity {
     private void showIsToday(long time) {
         String isToday = DateUtils.isToday(time) ? "是今天" : "不是今天";
         getTextViewWithId(R.id.txt1).setText(isToday);
-        String relativeDay = DateUtils.getRelativeTimeSpanString(time, System.currentTimeMillis(), DateUtils.DAY_IN_MILLIS).toString();
-        getTextViewWithId(R.id.txt2).setText(relativeDay);
+        //String relativeDay = DateUtils.getRelativeTimeSpanString(time, System.currentTimeMillis(), DateUtils.DAY_IN_MILLIS).toString();
+        //getTextViewWithId(R.id.txt2).setText(relativeDay);
+    }
+
+    private void showIsYesterDay(long time) {
+        String isToday = com.wh.finaldemos.demos.textshow.Date.DateUtils.getShortDay(time);
+        getTextViewWithId(R.id.txt2).setText(isToday);
+    }
+
+    private void showIsTheDayBeforeYesterday(long time) {
+        String isToday = com.wh.finaldemos.demos.textshow.Date.DateUtils.getShortDay(time);
+        getTextViewWithId(R.id.txt3).setText(isToday);
+        //String relativeDay = DateUtils.getRelativeTimeSpanString(time, System.currentTimeMillis(), DateUtils.DAY_IN_MILLIS).toString();
+        //getTextViewWithId(R.id.txt2).setText(relativeDay);
+    }
+
+    private void showIsDate(long time) {
+        String isToday = com.wh.finaldemos.demos.textshow.Date.DateUtils.getShortDay(time);
+        getTextViewWithId(R.id.txt4).setText(isToday);
     }
 
     private TextView getTextViewWithId(int id) {
