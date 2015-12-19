@@ -74,7 +74,9 @@
         <activity android:name=".demos.touch.touchtest.TouchTestDemoActivity" />
         <activity android:name=".demos.activity.ActivityDemosActivity" />
         <activity android:name=".demos.activity.lifecycle.ActivityLifeCycleDemoActivity" />
-        <activity android:name=".demos.customview.testcustomviewcallback.TestCustomViewCallbackDemoActivity"></activity>
+        <activity android:name=".demos.customview.testcustomviewcallback.TestCustomViewCallbackDemoActivity" />
+        <activity android:name=".demos.textshow.TextShowDemosActivity" />
+        <activity android:name=".demos.textshow.Date.DateShowDemoActivity"></activity>
     </application>
 
 </manifest>

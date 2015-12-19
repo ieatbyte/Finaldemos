@@ -1,6 +1,7 @@
 package com.wh.finaldemos;
 
 import com.wh.finaldemos.demos.activity.ActivityDemos;
+import com.wh.finaldemos.demos.textshow.TextShowDemos;
 import com.wh.finaldemos.demos.uiproperty.UiPropertyDemos;
 
 /**
@@ -17,7 +18,8 @@ public class TopDemos extends DemoGroup {
             com.wh.finaldemos.demos.media.MediaDemos.class,
             com.wh.finaldemos.demos.androidviews.AndroidViewDemos.class,
             UiPropertyDemos.class,
-            ActivityDemos.class
+            ActivityDemos.class,
+            TextShowDemos.class
     };
 
     @Override
