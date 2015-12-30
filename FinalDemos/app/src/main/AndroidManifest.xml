@@ -76,7 +76,8 @@
         <activity android:name=".demos.activity.lifecycle.ActivityLifeCycleDemoActivity" />
         <activity android:name=".demos.customview.testcustomviewcallback.TestCustomViewCallbackDemoActivity" />
         <activity android:name=".demos.textshow.TextShowDemosActivity" />
-        <activity android:name=".demos.textshow.Date.DateShowDemoActivity"></activity>
+        <activity android:name=".demos.textshow.Date.DateShowDemoActivity" />
+        <activity android:name=".demos.textshow.Path.PathShowDemoActivity"></activity>
     </application>
 
 </manifest>

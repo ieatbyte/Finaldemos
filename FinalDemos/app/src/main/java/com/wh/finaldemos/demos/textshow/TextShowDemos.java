@@ -2,6 +2,7 @@ package com.wh.finaldemos.demos.textshow;
 
 import com.wh.finaldemos.DemoGroup;
 import com.wh.finaldemos.demos.textshow.Date.DateShowDemo;
+import com.wh.finaldemos.demos.textshow.Path.PathShowDemo;
 
 /**
  * Created by wanghui5-s on 2015/12/19.
@@ -12,7 +13,8 @@ import com.wh.finaldemos.demos.textshow.Date.DateShowDemo;
 public class TextShowDemos extends DemoGroup {
 
     private final Class[] demos = new Class[]{
-            DateShowDemo.class
+            DateShowDemo.class,
+            PathShowDemo.class
     };
 
     @Override
