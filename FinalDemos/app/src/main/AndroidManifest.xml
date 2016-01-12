@@ -77,7 +77,9 @@
         <activity android:name=".demos.customview.testcustomviewcallback.TestCustomViewCallbackDemoActivity" />
         <activity android:name=".demos.textshow.TextShowDemosActivity" />
         <activity android:name=".demos.textshow.Date.DateShowDemoActivity" />
-        <activity android:name=".demos.textshow.Path.PathShowDemoActivity"></activity>
+        <activity android:name=".demos.textshow.Path.PathShowDemoActivity" />
+        <activity android:name=".demos.animation.AnimationDemosListActivity" />
+        <activity android:name=".demos.animation.normal.NormalAnimationDemoActivity"></activity>
     </application>
 
 </manifest>

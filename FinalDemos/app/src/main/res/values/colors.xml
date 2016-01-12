@@ -14,4 +14,6 @@
     <color name="colorWarmRed1">#FFB6C1</color>
     <color name="colorWarmRed2">#FFBBFF</color>
     <color name="colorWarmRed3">#FF6347</color>
+
+    <color name="v2_theme_color">#8FA5CA</color>
 </resources>
