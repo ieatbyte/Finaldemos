@@ -79,7 +79,8 @@
         <activity android:name=".demos.textshow.Date.DateShowDemoActivity" />
         <activity android:name=".demos.textshow.Path.PathShowDemoActivity" />
         <activity android:name=".demos.animation.AnimationDemosListActivity" />
-        <activity android:name=".demos.animation.normal.NormalAnimationDemoActivity"></activity>
+        <activity android:name=".demos.animation.normal.NormalAnimationDemoActivity" />
+        <activity android:name=".demos.androidviews.popupwindow.PopupWindowDemoActivity"></activity>
     </application>
 
 </manifest>
