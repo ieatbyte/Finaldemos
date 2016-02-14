@@ -2,6 +2,7 @@ package com.wh.finaldemos.demos.activity;
 
 import com.wh.finaldemos.DemoGroup;
 import com.wh.finaldemos.demos.activity.lifecycle.ActivityLifeCycleDemo;
+import com.wh.finaldemos.demos.activity.taskandbackstack.TaskAndBackstackDemo;
 
 /**
  * Created by wanghui5-s on 2015/12/13.
@@ -12,7 +13,8 @@ import com.wh.finaldemos.demos.activity.lifecycle.ActivityLifeCycleDemo;
 public class ActivityDemos extends DemoGroup{
 
     private final Class[] demos = new Class[]{
-            ActivityLifeCycleDemo.class
+            ActivityLifeCycleDemo.class,
+            TaskAndBackstackDemo.class
     };
 
     @Override

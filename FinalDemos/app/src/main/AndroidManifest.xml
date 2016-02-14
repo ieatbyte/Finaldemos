@@ -80,7 +80,11 @@
         <activity android:name=".demos.textshow.Path.PathShowDemoActivity" />
         <activity android:name=".demos.animation.AnimationDemosListActivity" />
         <activity android:name=".demos.animation.normal.NormalAnimationDemoActivity" />
-        <activity android:name=".demos.androidviews.popupwindow.PopupWindowDemoActivity"></activity>
+        <activity android:name=".demos.androidviews.popupwindow.PopupWindowDemoActivity" />
+        <activity android:name=".demos.activity.taskandbackstack.TaskAndBackstackDemoActivity" />
+        <activity android:name=".demos.activity.taskandbackstack.TB_NormalActA" />
+        <activity android:name=".demos.activity.taskandbackstack.TB_NormalActB" />
+        <activity android:name=".demos.activity.taskandbackstack.TB_SingleTaskAct" android:launchMode="singleTask"></activity>
     </application>
 
 </manifest>
