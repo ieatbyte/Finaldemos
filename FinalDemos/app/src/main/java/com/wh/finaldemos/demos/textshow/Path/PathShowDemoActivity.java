@@ -36,6 +36,9 @@ public class PathShowDemoActivity extends BaseDemoActivity {
         file1 = getFilesDir();
         stringBuilder.append("Context.getFilesDir():" + file1.getAbsolutePath() + ", exists:" + file1.exists());
         stringBuilder.append("\n\n");
+        file1 = getExternalCacheDir();
+        stringBuilder.append("Context.getExternalCacheDir():" + file1.getAbsolutePath() + ", exists:" + file1.exists());
+        stringBuilder.append("\n\n");
         return stringBuilder.toString();
     }
 }
