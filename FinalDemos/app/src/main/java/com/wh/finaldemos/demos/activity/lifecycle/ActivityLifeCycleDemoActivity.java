@@ -1,5 +1,6 @@
 package com.wh.finaldemos.demos.activity.lifecycle;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -63,6 +64,13 @@ public class ActivityLifeCycleDemoActivity extends BaseDemoActivity {
     protected void onStart() {
         super.onStart();
         ActivityLifeCycleDemo.logger.d("onStart");
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        ActivityLifeCycleDemo.logger.d("onNewIntent");
+        // Conclusion: onNewIntent will not update getIntent
     }
 
     @Override
