@@ -2,6 +2,7 @@ package com.wh.finaldemos;
 
 import com.wh.finaldemos.demos.activity.ActivityDemos;
 import com.wh.finaldemos.demos.animation.AnimationDemos;
+import com.wh.finaldemos.demos.resource.ResourceDemos;
 import com.wh.finaldemos.demos.textshow.TextShowDemos;
 import com.wh.finaldemos.demos.uiproperty.UiPropertyDemos;
 
@@ -21,7 +22,8 @@ public class TopDemos extends DemoGroup {
             UiPropertyDemos.class,
             ActivityDemos.class,
             TextShowDemos.class,
-            AnimationDemos.class
+            AnimationDemos.class,
+            ResourceDemos.class
     };
 
     @Override

@@ -3,6 +3,7 @@ package com.wh.finaldemos.demos.textshow;
 import com.wh.finaldemos.DemoGroup;
 import com.wh.finaldemos.demos.textshow.Date.DateShowDemo;
 import com.wh.finaldemos.demos.textshow.Path.PathShowDemo;
+import com.wh.finaldemos.demos.textshow.SysInfo.SysInfoShowDemo;
 
 /**
  * Created by wanghui5-s on 2015/12/19.
@@ -14,7 +15,8 @@ public class TextShowDemos extends DemoGroup {
 
     private final Class[] demos = new Class[]{
             DateShowDemo.class,
-            PathShowDemo.class
+            PathShowDemo.class,
+            SysInfoShowDemo.class
     };
 
     @Override

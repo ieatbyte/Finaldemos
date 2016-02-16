@@ -84,7 +84,12 @@
         <activity android:name=".demos.activity.taskandbackstack.TaskAndBackstackDemoActivity" />
         <activity android:name=".demos.activity.taskandbackstack.TB_NormalActA" />
         <activity android:name=".demos.activity.taskandbackstack.TB_NormalActB" />
-        <activity android:name=".demos.activity.taskandbackstack.TB_SingleTaskAct" android:launchMode="singleTask"></activity>
+        <activity
+            android:name=".demos.activity.taskandbackstack.TB_SingleTaskAct"
+            android:launchMode="singleTask" />
+        <activity android:name=".demos.textshow.SysInfo.SysInfoShowActivity" />
+        <activity android:name=".demos.resource.ResourceDemosActivity" />
+        <activity android:name=".demos.resource.ResourceMatch.ResourceMatchDemoActivity"></activity>
     </application>
 
 </manifest>
