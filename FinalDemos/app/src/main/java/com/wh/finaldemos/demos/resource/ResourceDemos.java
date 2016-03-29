@@ -1,6 +1,7 @@
 package com.wh.finaldemos.demos.resource;
 
 import com.wh.finaldemos.DemoGroup;
+import com.wh.finaldemos.demos.resource.BitmapScaleLoad.BitmapScaleLoadDemo;
 import com.wh.finaldemos.demos.resource.ResourceMatch.ResourceMatchDemo;
 
 /**
@@ -13,6 +14,7 @@ public class ResourceDemos extends DemoGroup{
 
     private final Class[] demos = new Class[]{
             ResourceMatchDemo.class,
+            BitmapScaleLoadDemo.class
     };
 
     @Override

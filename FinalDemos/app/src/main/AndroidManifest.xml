@@ -89,7 +89,9 @@
             android:launchMode="singleTask" />
         <activity android:name=".demos.textshow.SysInfo.SysInfoShowActivity" />
         <activity android:name=".demos.resource.ResourceDemosActivity" />
-        <activity android:name=".demos.resource.ResourceMatch.ResourceMatchDemoActivity"></activity>
+        <activity android:name=".demos.resource.ResourceMatch.ResourceMatchDemoActivity" />
+        <activity android:name=".demos.resource.BitmapScaleLoad.BitmapScaleLoadDemoActivity" />
+        <activity android:name=".demos.textshow.EnterSpace.EnterSpaceDemoActivity"></activity>
     </application>
 
 </manifest>
