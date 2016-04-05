@@ -93,7 +93,8 @@
         <activity android:name=".demos.resource.BitmapScaleLoad.BitmapScaleLoadDemoActivity" />
         <activity android:name=".demos.textshow.EnterSpace.EnterSpaceDemoActivity" />
         <activity android:name=".demos.textshow.StaticLayout.StaticLayoutDemoActivity" />
-        <activity android:name=".demos.customview.customtoast.CustomToastDemoActivity"></activity>
+        <activity android:name=".demos.customview.customtoast.CustomToastDemoActivity" />
+        <activity android:name=".demos.uiproperty.wrapcotent_matchparent.WrapContentMatchParentDemoActivity"></activity>
     </application>
 
 </manifest>
