@@ -91,7 +91,9 @@
         <activity android:name=".demos.resource.ResourceDemosActivity" />
         <activity android:name=".demos.resource.ResourceMatch.ResourceMatchDemoActivity" />
         <activity android:name=".demos.resource.BitmapScaleLoad.BitmapScaleLoadDemoActivity" />
-        <activity android:name=".demos.textshow.EnterSpace.EnterSpaceDemoActivity"></activity>
+        <activity android:name=".demos.textshow.EnterSpace.EnterSpaceDemoActivity" />
+        <activity android:name=".demos.textshow.StaticLayout.StaticLayoutDemoActivity" />
+        <activity android:name=".demos.customview.customtoast.CustomToastDemoActivity"></activity>
     </application>
 
 </manifest>

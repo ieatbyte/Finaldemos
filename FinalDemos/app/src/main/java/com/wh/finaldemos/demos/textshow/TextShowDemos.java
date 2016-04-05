@@ -4,6 +4,7 @@ import com.wh.finaldemos.DemoGroup;
 import com.wh.finaldemos.demos.textshow.Date.DateShowDemo;
 import com.wh.finaldemos.demos.textshow.EnterSpace.EnterSpaceDemo;
 import com.wh.finaldemos.demos.textshow.Path.PathShowDemo;
+import com.wh.finaldemos.demos.textshow.StaticLayout.StaticLayoutDemo;
 import com.wh.finaldemos.demos.textshow.SysInfo.SysInfoShowDemo;
 
 /**
@@ -18,7 +19,8 @@ public class TextShowDemos extends DemoGroup {
             DateShowDemo.class,
             PathShowDemo.class,
             SysInfoShowDemo.class,
-            EnterSpaceDemo.class
+            EnterSpaceDemo.class,
+            StaticLayoutDemo.class
     };
 
     @Override
