@@ -1,12 +1,12 @@
 package com.whlib.testjavalib;
 
-import com.whlib.testjavalib.reference.TryChangeString;
+import com.whlib.testjavalib.string.TrySubString;
 
 public class Main {
 
     public static void main(String[] args) {
         System.out.println("hello world!");
-        startTry(TryChangeString.class);
+        startTry(TrySubString.class);
     }
 
     public static <T> void startTry(Class<? extends ATry> tryClass) {

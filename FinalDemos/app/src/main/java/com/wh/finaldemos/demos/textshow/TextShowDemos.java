@@ -3,6 +3,7 @@ package com.wh.finaldemos.demos.textshow;
 import com.wh.finaldemos.DemoGroup;
 import com.wh.finaldemos.demos.textshow.Date.DateShowDemo;
 import com.wh.finaldemos.demos.textshow.EnterSpace.EnterSpaceDemo;
+import com.wh.finaldemos.demos.textshow.MaxLength.MaxLengthDemo;
 import com.wh.finaldemos.demos.textshow.Path.PathShowDemo;
 import com.wh.finaldemos.demos.textshow.StaticLayout.StaticLayoutDemo;
 import com.wh.finaldemos.demos.textshow.SysInfo.SysInfoShowDemo;
@@ -20,7 +21,8 @@ public class TextShowDemos extends DemoGroup {
             PathShowDemo.class,
             SysInfoShowDemo.class,
             EnterSpaceDemo.class,
-            StaticLayoutDemo.class
+            StaticLayoutDemo.class,
+            MaxLengthDemo.class
     };
 
     @Override
