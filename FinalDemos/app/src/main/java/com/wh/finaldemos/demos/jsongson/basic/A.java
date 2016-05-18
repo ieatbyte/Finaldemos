@@ -14,4 +14,6 @@ public class A {
     public int a;
 
     public int b = 10;
+
+    public HB data = new HB();
 }
