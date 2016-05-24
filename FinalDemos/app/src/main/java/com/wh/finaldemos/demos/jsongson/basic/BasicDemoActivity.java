@@ -24,7 +24,7 @@ public class BasicDemoActivity extends AppCompatActivity {
 //        A a = new A();
 //        contentTextView.setText(gson.toJson(a));
 
-        A a2 = gson.fromJson("{\"1\":6,\"b\":2,\"data\":{\"mName\":12}}", A.class);
+        A a2 = gson.fromJson("{\"1\":6,\"b\":2,\"data\":{\"mName\":12},\"dataStrs\":[]}", A.class);
         //A a2 = new A();
         contentTextView.setText(gson.toJson(a2));
     }

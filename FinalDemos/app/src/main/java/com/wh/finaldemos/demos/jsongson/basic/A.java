@@ -2,6 +2,8 @@ package com.wh.finaldemos.demos.jsongson.basic;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 /**
  * Created by wanghui5-s on 2016/5/18.
  * <p/>
@@ -16,4 +18,6 @@ public class A {
     public int b = 10;
 
     public HB data = new HB();
+
+    public List<String> dataStrs;
 }
