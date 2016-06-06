@@ -97,7 +97,9 @@
         <activity android:name=".demos.uiproperty.wrapcotent_matchparent.WrapContentMatchParentDemoActivity" />
         <activity android:name=".demos.textshow.MaxLength.MaxLengthDemoActivity" />
         <activity android:name=".demos.jsongson.JsonGsonDemosActivity" />
-        <activity android:name=".demos.jsongson.basic.BasicDemoActivity"></activity>
+        <activity android:name=".demos.jsongson.basic.BasicDemoActivity" />
+        <activity android:name=".demos.customview.highlightguide.HightlightGuideDemoActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 
 </manifest>

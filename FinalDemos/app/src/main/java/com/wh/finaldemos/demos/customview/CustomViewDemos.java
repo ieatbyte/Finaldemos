@@ -2,6 +2,7 @@ package com.wh.finaldemos.demos.customview;
 
 import com.wh.finaldemos.DemoGroup;
 import com.wh.finaldemos.demos.customview.customtoast.CustomToastDemo;
+import com.wh.finaldemos.demos.customview.highlightguide.HighlightGuideDemo;
 import com.wh.finaldemos.demos.customview.testcustomshapeimageview.TestCustomShapeImageViewDemo;
 import com.wh.finaldemos.demos.customview.testcustomviewcallback.TestCustomViewCallbackDemo;
 import com.wh.finaldemos.demos.customview.testupcoverlayout.UpCoverLayoutUseDemo;
@@ -15,7 +16,8 @@ public class CustomViewDemos extends DemoGroup {
             TestCustomShapeImageViewDemo.class,
             UpCoverLayoutUseDemo.class,
             TestCustomViewCallbackDemo.class,
-            CustomToastDemo.class
+            CustomToastDemo.class,
+            HighlightGuideDemo.class
     };
 
     @Override
