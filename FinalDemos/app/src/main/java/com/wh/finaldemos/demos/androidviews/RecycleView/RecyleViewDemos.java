@@ -1,6 +1,7 @@
 package com.wh.finaldemos.demos.androidviews.RecycleView;
 
 import com.wh.finaldemos.DemoGroup;
+import com.wh.finaldemos.demos.androidviews.RecycleView.collapsable.CollapsableDemo;
 import com.wh.finaldemos.demos.androidviews.RecycleView.imageslider.ImageSliderDemo;
 import com.wh.finaldemos.demos.androidviews.RecycleView.simpleuse.RecycleViewSimpleUseDemo;
 
@@ -13,7 +14,7 @@ import com.wh.finaldemos.demos.androidviews.RecycleView.simpleuse.RecycleViewSim
 public class RecyleViewDemos extends DemoGroup {
 
     private final Class[] demos = new Class[]{
-            RecycleViewSimpleUseDemo.class, ImageSliderDemo.class
+            RecycleViewSimpleUseDemo.class, ImageSliderDemo.class, CollapsableDemo.class
     };
 
     @Override

@@ -6,5 +6,9 @@ package com.wh.finaldemos.demos.androidviews.RecycleView.collapsable;
  * Conclusion:
  * #1:
  */
-public class DemoCollapsedItemText {
+public class DemoCollapsedItemText extends CollapsedItem {
+
+    public DemoCollapsedItemText(int id, String title) {
+        super(id, title);
+    }
 }
