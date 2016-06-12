@@ -13,23 +13,23 @@ import java.util.ArrayList;
  * Conclusion:
  * #1:
  */
-public abstract class CollapsableRVAdapter extends RecyclerView.Adapter {
+public abstract class ExpandableRVAdapter extends RecyclerView.Adapter {
 
     public final static int INVALID_POS = -1;
 
     protected ArrayList<Item> mData;
 
     public interface Callback {
-        public void onExpand(CollapsableItem ci);
+        public void onExpand(ExpandableItem ci);
 
-        public void onPreCollapse(CollapsableItem ci, int pos);
+        public void onPreCollapse(ExpandableItem ci, int pos);
 
-        public void onCollapse(CollapsableItem ci);
+        public void onCollapse(ExpandableItem ci);
     }
 
     protected Callback mCallback;
 
-    public CollapsableRVAdapter() {
+    public ExpandableRVAdapter() {
         super();
 
         mData = new ArrayList<>();
@@ -62,7 +62,7 @@ public abstract class CollapsableRVAdapter extends RecyclerView.Adapter {
     public int findNextCollapsableItemPos(int pos) {
         if (pos < mData.size() - 1) {
             for (int i = pos + 1; i <= mData.size() - 1; ++i) {
-                if (mData.get(i) instanceof CollapsableItem) {
+                if (mData.get(i) instanceof ExpandableItem) {
                     return i;
                 }
             }
@@ -73,7 +73,7 @@ public abstract class CollapsableRVAdapter extends RecyclerView.Adapter {
     public int findPreviousCollapsableItemPos(int pos) {
         if (pos < mData.size() - 1 && pos >= 0) {
             for (int i = pos - 1; i >= 0; --i) {
-                if (mData.get(i) instanceof CollapsableItem) {
+                if (mData.get(i) instanceof ExpandableItem) {
                     return i;
                 }
             }
@@ -81,11 +81,11 @@ public abstract class CollapsableRVAdapter extends RecyclerView.Adapter {
         return INVALID_POS;
     }
 
-    public void expandItem(CollapsableItem ci) {
+    public void expandItem(ExpandableItem ci) {
         if (ci.expanded) {
             return;
         } else {
-            ArrayList<CollapsedItem> subItems = ci.getSubItems();
+            ArrayList<ExpandableSubItem> subItems = ci.getSubItems();
             if (subItems != null && subItems.size() > 0) {
                 Item current = ci;
                 for (Item e : subItems) {
@@ -101,14 +101,14 @@ public abstract class CollapsableRVAdapter extends RecyclerView.Adapter {
         }
     }
 
-    public void collapseItem(CollapsableItem ci) {
+    public void collapseItem(ExpandableItem ci) {
         if (!ci.expanded) {
             return;
         } else {
             if (mCallback != null) {
                 mCallback.onPreCollapse(ci, mData.indexOf(ci));
             }
-            ArrayList<CollapsedItem> subItems = ci.getSubItems();
+            ArrayList<ExpandableSubItem> subItems = ci.getSubItems();
             if (subItems != null && subItems.size() > 0) {
                 mData.removeAll(subItems);
             }

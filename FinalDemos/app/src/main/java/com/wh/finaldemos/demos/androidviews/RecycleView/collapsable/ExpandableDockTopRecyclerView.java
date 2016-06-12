@@ -18,18 +18,86 @@ import com.wh.finaldemos.Item;
  * Conclusion:
  * #1:
  */
-public class DockItemRecyclerView extends RecyclerView {
+// Expandable == Collapsable
+public class ExpandableDockTopRecyclerView extends RecyclerView {
+
+    private boolean mDockTopEnabled = true;
 
     private FrameLayout mDockItemViewWrapper;
 
-    public DockItemRecyclerView(Context context) {
+    public ExpandableDockTopRecyclerView(Context context) {
         super(context);
         init();
     }
 
-    public DockItemRecyclerView(Context context, @Nullable AttributeSet attrs) {
+    public ExpandableDockTopRecyclerView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init();
+    }
+
+    private void init() {
+        this.addOnScrollListener(new OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                Log.e("DockItemRecyclerView", "onScrollStateChanged newState:" + newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                Log.e("DockItemRecyclerView", "onScrolled dy:" + dy);
+                if (mDockTopEnabled) {
+                    checkAndFixDock();
+                }
+            }
+        });
+    }
+
+    @Override
+    public void setAdapter(Adapter adapter) {
+        super.setAdapter(adapter);
+        DemoExpandableRVAdapter realAdapter = (DemoExpandableRVAdapter) adapter;
+        realAdapter.setCallback(new ExpandableRVAdapter.Callback() {
+            @Override
+            public void onExpand(ExpandableItem ci) {
+                if (mDockTopEnabled) {
+                    checkAndFixDock();
+                }
+            }
+
+            @Override
+            public void onPreCollapse(ExpandableItem ci, int pos) {
+                if (mDockTopEnabled) {
+                    if (mDockItemViewWrapper.getVisibility() == View.VISIBLE) {
+                        int showingPos = (int) mDockItemViewWrapper.getTag();
+                        if (showingPos == pos) {
+                            ExpandableDockTopRecyclerView.this.scrollToPosition(pos);
+                            Log.e("DockItemRecyclerView", "onCollapse scrollToPosition:" + pos);
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCollapse(ExpandableItem ci) {
+                if (mDockTopEnabled) {
+                    checkAndFixDock();
+                }
+            }
+        });
+    }
+
+    public void setDockItemViewWrapper(FrameLayout wrapper) {
+        mDockItemViewWrapper = wrapper;
+
+        // initial
+        mDockItemViewWrapper.setVisibility(View.INVISIBLE);
+        mDockItemViewWrapper.setTag(-1);
+    }
+
+    public void setDockTopEnabled(boolean enabled) {
+        mDockTopEnabled = enabled;
     }
 
     private void showDockForItem(int pos) {
@@ -54,7 +122,7 @@ public class DockItemRecyclerView extends RecyclerView {
             // do showDockForItem
         }
         Log.e("DockItemRecyclerView", "showDockForItem pos:" + pos + ", and add view");
-        ViewHolder vh = getAdapter().onCreateViewHolder(mDockItemViewWrapper, DemoCollapsableRVAdapter.VIEW_TYPE_COLLAPSABLE);
+        ViewHolder vh = getAdapter().onCreateViewHolder(mDockItemViewWrapper, DemoExpandableRVAdapter.VIEW_TYPE_COLLAPSABLE);
         getAdapter().onBindViewHolder(vh, pos);
         mDockItemViewWrapper.setVisibility(View.VISIBLE);
         mDockItemViewWrapper.removeAllViews();
@@ -81,7 +149,7 @@ public class DockItemRecyclerView extends RecyclerView {
     private void fixPosByNextCollapsable(int currentPos) {
         Log.e("DockItemRecyclerView", "fixPosByNextCollapsable currentPos:" + currentPos);
         int dockViewBottom = mDockItemViewWrapper.getTop() + mDockItemViewWrapper.getMeasuredHeight();
-        DemoCollapsableRVAdapter adapter = (DemoCollapsableRVAdapter) getAdapter();
+        DemoExpandableRVAdapter adapter = (DemoExpandableRVAdapter) getAdapter();
         LinearLayoutManager layoutManager = (LinearLayoutManager) getLayoutManager();
         int nextCollapsableItemPos = adapter.findNextCollapsableItemPos(currentPos);
         Log.e("DockItemRecyclerView", "fixPosByNextCollapsable currentPos:" + currentPos + ", nextCollapsableItemPos:" + nextCollapsableItemPos + ", currentY:" + mDockItemViewWrapper.getY() + ", dockViewBottom:" + dockViewBottom);
@@ -102,67 +170,20 @@ public class DockItemRecyclerView extends RecyclerView {
         }
     }
 
-    @Override
-    public void setAdapter(Adapter adapter) {
-        super.setAdapter(adapter);
-        DemoCollapsableRVAdapter realAdapter = (DemoCollapsableRVAdapter) adapter;
-        realAdapter.setCallback(new CollapsableRVAdapter.Callback() {
-            @Override
-            public void onExpand(CollapsableItem ci) {
-                checkAndFixDock();
-            }
-
-            @Override
-            public void onPreCollapse(CollapsableItem ci, int pos) {
-//                int topItemPos = ((LinearLayoutManager) getLayoutManager()).findFirstVisibleItemPosition();
-//                int prevCollapsablePos = ((DemoCollapsableRVAdapter)getAdapter()).findPreviousCollapsableItemPos(topItemPos);
-                if (mDockItemViewWrapper.getVisibility() == View.VISIBLE) {
-                    int showingPos = (int)mDockItemViewWrapper.getTag();
-                    if (showingPos == pos) {
-                        DockItemRecyclerView.this.scrollToPosition(pos);
-                        Log.e("DockItemRecyclerView", "onCollapse scrollToPosition:" + pos);
-                    }
-                }
-            }
-
-            @Override
-            public void onCollapse(CollapsableItem ci) {
-                checkAndFixDock();
-            }
-        });
-    }
-
-    private void init() {
-        this.addOnScrollListener(new OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                Log.e("DockItemRecyclerView", "onScrollStateChanged newState:" + newState);
-            }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                Log.e("DockItemRecyclerView", "onScrolled dy:" + dy);
-                checkAndFixDock();
-            }
-        });
-    }
-
     private void checkAndFixDock() {
         int topItemPos = ((LinearLayoutManager) getLayoutManager()).findFirstVisibleItemPosition();
         int topItemType = getAdapter().getItemViewType(topItemPos);
-        DemoCollapsableRVAdapter adapter = (DemoCollapsableRVAdapter) getAdapter();
+        DemoExpandableRVAdapter adapter = (DemoExpandableRVAdapter) getAdapter();
         LinearLayoutManager layoutManager = (LinearLayoutManager) getLayoutManager();
         Log.e("DockItemRecyclerView", "onScrolled topItemPos:" + topItemPos);
 
         // if top item changed and is collapsable item
-        if (topItemType == DemoCollapsableRVAdapter.VIEW_TYPE_COLLAPSABLE) {
-            Item topitem = ((DemoCollapsableRVAdapter) getAdapter()).getItemAtPos(topItemPos);
-            if (topitem instanceof CollapsableItem) {
-                if (((CollapsableItem) topitem).expanded
-                        && ((CollapsableItem) topitem).getSubItems() != null
-                        && ((CollapsableItem) topitem).getSubItems().size() > 0) {
+        if (topItemType == DemoExpandableRVAdapter.VIEW_TYPE_COLLAPSABLE) {
+            Item topitem = ((DemoExpandableRVAdapter) getAdapter()).getItemAtPos(topItemPos);
+            if (topitem instanceof ExpandableItem) {
+                if (((ExpandableItem) topitem).expanded
+                        && ((ExpandableItem) topitem).getSubItems() != null
+                        && ((ExpandableItem) topitem).getSubItems().size() > 0) {
                     View topCollapsableItemView = layoutManager.findViewByPosition(topItemPos);
                     if (topCollapsableItemView.getY() != 0) {
                         showDockForItem(topItemPos);
@@ -176,7 +197,7 @@ public class DockItemRecyclerView extends RecyclerView {
                     hideDock();
                 }
             } else {
-                // type is VIEW_TYPE_COLLAPSABLE but is not CollapsableItem
+                // type is VIEW_TYPE_COLLAPSABLE but is not ExpandableItem
                 // should not reach here
             }
         } else {
@@ -187,14 +208,5 @@ public class DockItemRecyclerView extends RecyclerView {
             fixPosByNextCollapsable(topItemPos);
         }
     }
-
-    public void setDockItemViewWrapper(FrameLayout wrapper) {
-        mDockItemViewWrapper = wrapper;
-
-        // initial
-        mDockItemViewWrapper.setVisibility(View.INVISIBLE);
-        mDockItemViewWrapper.setTag(-1);
-    }
-
 
 }

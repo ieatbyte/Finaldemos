@@ -8,9 +8,9 @@ import com.wh.finaldemos.Item;
  * Conclusion:
  * #1:
  */
-public class CollapsedItem extends Item {
+public class ExpandableSubItem extends Item {
 
-    public CollapsedItem(int id, String title) {
+    public ExpandableSubItem(int id, String title) {
         super(id, title);
     }
 }

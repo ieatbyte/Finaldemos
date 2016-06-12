@@ -17,7 +17,7 @@ import java.util.ArrayList;
  * Conclusion:
  * #1:
  */
-public class DemoCollapsableRVAdapter extends CollapsableRVAdapter{
+public class DemoExpandableRVAdapter extends ExpandableRVAdapter {
 
     public final static int VIEW_TYPE_COLLAPSABLE = 0;
     public final static int VIEW_TYPE_COLLAPSED_TEXT = 1;
@@ -28,8 +28,8 @@ public class DemoCollapsableRVAdapter extends CollapsableRVAdapter{
         super.onBindViewHolder(holder, position);
         Item item = mData.get(position);
         if (holder instanceof CollapsableItemViewHolder) {
-            final DemoCollapsableItem realItem = (DemoCollapsableItem)item;
-            ((CollapsableItemViewHolder) holder).titleView.setText("DemoCollapsableItem" + position + ", " + realItem.title + ", expanded:" + realItem.expanded);
+            final DemoExpandableItem realItem = (DemoExpandableItem)item;
+            ((CollapsableItemViewHolder) holder).titleView.setText("DemoExpandableItem" + position + ", " + realItem.title + ", expanded:" + realItem.expanded);
             ((CollapsableItemViewHolder) holder).itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -41,11 +41,11 @@ public class DemoCollapsableRVAdapter extends CollapsableRVAdapter{
                 }
             });
         } else if (holder instanceof CollapsedTextItemViewHolder) {
-            DemoCollapsedItemText realItem = (DemoCollapsedItemText)item;
-            ((CollapsedTextItemViewHolder) holder).titleView.setText("DemoCollapsedItemText" + position + ", " + realItem.title);
+            DemoExpandableSubItemText realItem = (DemoExpandableSubItemText)item;
+            ((CollapsedTextItemViewHolder) holder).titleView.setText("DemoExpandableSubItemText" + position + ", " + realItem.title);
         } else if (holder instanceof CollapsedImageItemViewHolder) {
-            DemoCollapsedItemImage realItem = (DemoCollapsedItemImage)item;
-            ((CollapsedImageItemViewHolder) holder).titleView.setText("DemoCollapsedItemImage" + position + ", " + realItem.title);
+            DemoExpandableSubItemImage realItem = (DemoExpandableSubItemImage)item;
+            ((CollapsedImageItemViewHolder) holder).titleView.setText("DemoExpandableSubItemImage" + position + ", " + realItem.title);
         }
     }
 
@@ -65,11 +65,11 @@ public class DemoCollapsableRVAdapter extends CollapsableRVAdapter{
     @Override
     public int getItemViewType(int position) {
         Item item = mData.get(position);
-        if (item instanceof CollapsableItem) {
+        if (item instanceof ExpandableItem) {
             return VIEW_TYPE_COLLAPSABLE;
-        } else if (item instanceof DemoCollapsedItemText) {
+        } else if (item instanceof DemoExpandableSubItemText) {
             return VIEW_TYPE_COLLAPSED_TEXT;
-        } else if (item instanceof DemoCollapsedItemImage) {
+        } else if (item instanceof DemoExpandableSubItemImage) {
             return VIEW_TYPE_COLLAPSED_IMAGE;
         } else {
             throw new RuntimeException();
@@ -110,44 +110,44 @@ public class DemoCollapsableRVAdapter extends CollapsableRVAdapter{
 
     public void buildDummyData() {
         mData.clear();
-        DemoCollapsableItem item1 = new DemoCollapsableItem(0, "DCS1");
-        ArrayList<CollapsedItem> item1Sub = new ArrayList<>();
+        DemoExpandableItem item1 = new DemoExpandableItem(0, "DCS1");
+        ArrayList<ExpandableSubItem> item1Sub = new ArrayList<>();
         for (int i = 0; i < 10; ++i) {
             if (i != 5) {
                 if (i == 0) {
-                    item1Sub.add(new DemoCollapsedItemImage(i, "image " + i));
+                    item1Sub.add(new DemoExpandableSubItemImage(i, "image " + i));
                 } else {
-                    item1Sub.add(new DemoCollapsedItemText(i, "text " + i));
+                    item1Sub.add(new DemoExpandableSubItemText(i, "text " + i));
                 }
             } else {
-                item1Sub.add(new DemoCollapsedItemImage(i, "image " + i));
+                item1Sub.add(new DemoExpandableSubItemImage(i, "image " + i));
             }
         }
         item1.addSubItems(item1Sub, true);
         mData.add(item1);
-        DemoCollapsableItem item2 = new DemoCollapsableItem(0, "DCS2");
+        DemoExpandableItem item2 = new DemoExpandableItem(0, "DCS2");
         mData.add(item2);
-        DemoCollapsableItem item3 = new DemoCollapsableItem(0, "DCS3");
+        DemoExpandableItem item3 = new DemoExpandableItem(0, "DCS3");
         mData.add(item3);
-        ArrayList<CollapsedItem> item3Sub = new ArrayList<>();
-        item3Sub.add(new DemoCollapsedItemImage(0, "image " + 0));
+        ArrayList<ExpandableSubItem> item3Sub = new ArrayList<>();
+        item3Sub.add(new DemoExpandableSubItemImage(0, "image " + 0));
         item3.addSubItems(item3Sub, true);
-        DemoCollapsableItem item4 = new DemoCollapsableItem(0, "DCS4");
+        DemoExpandableItem item4 = new DemoExpandableItem(0, "DCS4");
         mData.add(item4);
-        DemoCollapsableItem item5 = new DemoCollapsableItem(0, "DCS5");
+        DemoExpandableItem item5 = new DemoExpandableItem(0, "DCS5");
         mData.add(item5);
-        ArrayList<CollapsedItem> item5Sub = new ArrayList<>();
+        ArrayList<ExpandableSubItem> item5Sub = new ArrayList<>();
         for (int i = 0; i < 10; ++i) {
             if (i != 5) {
-                item5Sub.add(new DemoCollapsedItemText(i, "text " + i));
+                item5Sub.add(new DemoExpandableSubItemText(i, "text " + i));
             } else {
-                item5Sub.add(new DemoCollapsedItemImage(i, "image " + i));
+                item5Sub.add(new DemoExpandableSubItemImage(i, "image " + i));
             }
         }
         item5.addSubItems(item5Sub, true);
 
         for (int i = 0; i < 200; ++i) {
-            DemoCollapsableItem itemH = new DemoCollapsableItem(0, "DCS" + (i + 6));
+            DemoExpandableItem itemH = new DemoExpandableItem(0, "DCS" + (i + 6));
             mData.add(itemH);
         }
 

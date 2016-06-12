@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.wh.finaldemos.demos.androidviews.RecycleView.collapsable.DockItemRecyclerView
+        <com.wh.finaldemos.demos.androidviews.RecycleView.collapsable.ExpandableDockTopRecyclerView
             android:id="@+id/list"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

@@ -10,22 +10,22 @@ import java.util.ArrayList;
  * Conclusion:
  * #1:
  */
-public class CollapsableItem extends Item{
+public class ExpandableItem extends Item{
 
     // mark expanded data
     public boolean expanded;
 
-    private ArrayList<CollapsedItem> mSubItems;
+    private ArrayList<ExpandableSubItem> mSubItems;
 
-    public CollapsableItem(int id, String title) {
+    public ExpandableItem(int id, String title) {
         super(id, title);
     }
 
-    public ArrayList<CollapsedItem> getSubItems() {
+    public ArrayList<ExpandableSubItem> getSubItems() {
         return mSubItems;
     }
 
-    public void addSubItems(ArrayList<CollapsedItem> toAdd, boolean clear) {
+    public void addSubItems(ArrayList<ExpandableSubItem> toAdd, boolean clear) {
         if (mSubItems == null) {
             mSubItems = new ArrayList<>();
         }
