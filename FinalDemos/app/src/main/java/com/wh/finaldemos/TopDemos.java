@@ -3,6 +3,7 @@ package com.wh.finaldemos;
 import com.wh.finaldemos.demos.activity.ActivityDemos;
 import com.wh.finaldemos.demos.animation.AnimationDemos;
 import com.wh.finaldemos.demos.jsongson.JsonGsonDemos;
+import com.wh.finaldemos.demos.otherlibs.OtherLibsDemos;
 import com.wh.finaldemos.demos.resource.ResourceDemos;
 import com.wh.finaldemos.demos.textshow.TextShowDemos;
 import com.wh.finaldemos.demos.uiproperty.UiPropertyDemos;
@@ -25,7 +26,8 @@ public class TopDemos extends DemoGroup {
             TextShowDemos.class,
             AnimationDemos.class,
             ResourceDemos.class,
-            JsonGsonDemos.class
+            JsonGsonDemos.class,
+            OtherLibsDemos.class
     };
 
     @Override
