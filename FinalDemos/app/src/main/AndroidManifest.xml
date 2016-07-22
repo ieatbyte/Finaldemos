@@ -8,6 +8,7 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".App"
@@ -102,8 +103,11 @@
             android:name=".demos.customview.highlightguide.HightlightGuideDemoActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".demos.androidviews.RecycleView.collapsable.CollapseableDemoActivity" />
-        <activity android:name=".demos.otherlibs.butterknife.ButterKnifeDemoActivity"></activity>
-        <activity android:name=".demos.otherlibs.OtherLibsDemosListActivity"></activity>
+        <activity android:name=".demos.otherlibs.butterknife.ButterKnifeDemoActivity" />
+        <activity android:name=".demos.otherlibs.OtherLibsDemosListActivity" />
+        <activity android:name=".demos.otherlibs.retrofit.RetrofitDemoActivity" />
+        <activity android:name=".demos.otherlibs.rxjava.RXDemoActivity"></activity>
+        <activity android:name="com.wh.finaldemos.demos.otherlibs.rxbus.Main2Activity"></activity>
     </application>
 
 </manifest>
