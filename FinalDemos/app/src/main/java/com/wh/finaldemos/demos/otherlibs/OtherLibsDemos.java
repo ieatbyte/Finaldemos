@@ -2,6 +2,7 @@ package com.wh.finaldemos.demos.otherlibs;
 
 import com.wh.finaldemos.DemoGroup;
 import com.wh.finaldemos.demos.otherlibs.butterknife.ButterKnifeDemo;
+import com.wh.finaldemos.demos.otherlibs.otto.OttoDemo;
 import com.wh.finaldemos.demos.otherlibs.retrofit.RetrofitDemo;
 import com.wh.finaldemos.demos.otherlibs.rxjava.RXDemo;
 
@@ -16,7 +17,8 @@ public class OtherLibsDemos extends DemoGroup {
     private final Class[] demos = new Class[]{
             ButterKnifeDemo.class,
             RetrofitDemo.class,
-            RXDemo.class
+            RXDemo.class,
+            OttoDemo.class
     };
 
     @Override

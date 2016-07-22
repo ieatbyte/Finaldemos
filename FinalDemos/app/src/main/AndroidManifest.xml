@@ -106,8 +106,10 @@
         <activity android:name=".demos.otherlibs.butterknife.ButterKnifeDemoActivity" />
         <activity android:name=".demos.otherlibs.OtherLibsDemosListActivity" />
         <activity android:name=".demos.otherlibs.retrofit.RetrofitDemoActivity" />
-        <activity android:name=".demos.otherlibs.rxjava.RXDemoActivity"></activity>
-        <activity android:name="com.wh.finaldemos.demos.otherlibs.rxbus.Main2Activity"></activity>
+        <activity android:name=".demos.otherlibs.rxjava.RXDemoActivity" />
+        <activity android:name=".demos.otherlibs.rxbus.Main2Activity" />
+        <activity android:name=".demos.otherlibs.otto.OttoDemoActivity" />
+        <activity android:name=".demos.otherlibs.otto.Activity2"></activity>
     </application>
 
 </manifest>
