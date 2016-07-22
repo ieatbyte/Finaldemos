@@ -8,6 +8,8 @@ import com.squareup.otto.Produce;
 import com.squareup.otto.Subscribe;
 import com.wh.finaldemos.R;
 
+import org.greenrobot.eventbus.EventBus;
+
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -19,17 +21,25 @@ public class Activity2 extends AppCompatActivity {
         setContentView(R.layout.activity_2);
         ButterKnife.bind(this);
         BusProvider.getInstance().register(this);
+        EventBus.getDefault().register(this);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         BusProvider.getInstance().unregister(this);
+        EventBus.getDefault().unregister(this);
     }
 
     @OnClick(R.id.but1)
     void onBut1Click() {
         BusProvider.getInstance().post(new MyEvent());
+        EventBus.getDefault().post(new MyEvent());
+    }
+
+    @org.greenrobot.eventbus.Subscribe
+    public void onMyEvent2(Activity2.MyEvent event) {
+        Log.e("eventbus_demo", "event:" + event.a);
     }
 
     @Subscribe public void onMyEvent(MyEvent event) {
@@ -43,6 +53,6 @@ public class Activity2 extends AppCompatActivity {
     }
 
     public static class MyEvent {
-        int a = 2;
+        public int a = 2;
     }
 }

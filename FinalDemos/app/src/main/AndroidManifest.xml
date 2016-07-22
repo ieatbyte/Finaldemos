@@ -73,8 +73,12 @@
         <activity android:name=".demos.uiproperty.UiPropertyDemosActivity" />
         <activity android:name=".demos.uiproperty.viewgroupvisibility.ViewGroupVisibilityDemoActivity" />
         <activity android:name=".demos.touch.touchtest.TouchTestDemoActivity" />
-        <activity android:name=".demos.activity.ActivityDemosActivity" android:screenOrientation="portrait" />
-        <activity android:name=".demos.activity.lifecycle.ActivityLifeCycleDemoActivity" android:configChanges="orientation|keyboard|keyboardHidden|screenSize"/>
+        <activity
+            android:name=".demos.activity.ActivityDemosActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".demos.activity.lifecycle.ActivityLifeCycleDemoActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize" />
         <activity android:name=".demos.customview.testcustomviewcallback.TestCustomViewCallbackDemoActivity" />
         <activity android:name=".demos.textshow.TextShowDemosActivity" />
         <activity android:name=".demos.textshow.Date.DateShowDemoActivity" />
@@ -109,7 +113,8 @@
         <activity android:name=".demos.otherlibs.rxjava.RXDemoActivity" />
         <activity android:name=".demos.otherlibs.rxbus.Main2Activity" />
         <activity android:name=".demos.otherlibs.otto.OttoDemoActivity" />
-        <activity android:name=".demos.otherlibs.otto.Activity2"></activity>
+        <activity android:name=".demos.otherlibs.otto.Activity2" />
+        <activity android:name=".demos.otherlibs.eventbus.EventBusDemoActivity"></activity>
     </application>
 
 </manifest>

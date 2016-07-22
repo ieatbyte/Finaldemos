@@ -1,30 +1,32 @@
-package com.wh.finaldemos.demos.otherlibs.otto;
+package com.wh.finaldemos.demos.otherlibs.eventbus;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.squareup.otto.Subscribe;
 import com.wh.finaldemos.R;
+import com.wh.finaldemos.demos.otherlibs.otto.Activity2;
+
+import org.greenrobot.eventbus.EventBus;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class OttoDemoActivity extends AppCompatActivity {
+public class EventBusDemoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_otto_demo);
+        setContentView(R.layout.activity_event_bus_demo);
         ButterKnife.bind(this);
-        BusProvider.getInstance().register(this);
+        EventBus.getDefault().register(this);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        BusProvider.getInstance().unregister(this);
+        EventBus.getDefault().unregister(this);
     }
 
     @OnClick(R.id.but1)
@@ -33,13 +35,8 @@ public class OttoDemoActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @Subscribe
-    public void onMyEvent(Activity2.MyEvent event) {
-        Log.e("otto_demo", "event:" + event.a);
-    }
-
     @org.greenrobot.eventbus.Subscribe
-    public void onMyEvent2(Activity2.MyEvent event) {
+    public void onMyEvent(Activity2.MyEvent event) {
         Log.e("eventbus_demo", "event:" + event.a);
     }
 }
