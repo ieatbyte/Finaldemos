@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.WindowManager;
 
 import com.wh.finaldemos.BaseDemoActivity;
@@ -11,11 +12,26 @@ import com.wh.finaldemos.R;
 
 public class ActivityLifeCycleDemoActivity extends BaseDemoActivity {
 
+    public int mLastOrientation = Integer.MIN_VALUE;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activity_life_cycle_demo);
         ActivityLifeCycleDemo.logger.d("onCreate");
+        getWindow().getDecorView().post(new Runnable() {
+            @Override
+            public void run() {
+                int ori = getResources().getConfiguration().orientation;
+                if (ori != mLastOrientation) {
+                    Log.e("test_orientation2", ", get:" + ori + ", last:" + mLastOrientation + ", time:" + System.currentTimeMillis() + ", this:" + ActivityLifeCycleDemoActivity.this);
+                }
+                mLastOrientation = ori;
+                if (!isFinishing()) {
+                    getWindow().getDecorView().post(this);
+                }
+            }
+        });
     }
 
     @Override
@@ -95,6 +111,7 @@ public class ActivityLifeCycleDemoActivity extends BaseDemoActivity {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         ActivityLifeCycleDemo.logger.d("onConfigurationChanged");
+        Log.e("test_orientation", "ori:" + newConfig.orientation + ", get:" + getResources().getConfiguration().orientation);
     }
 
     @Override
