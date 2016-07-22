@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.squareup.otto.Produce;
 import com.squareup.otto.Subscribe;
 import com.wh.finaldemos.R;
 
@@ -33,6 +34,12 @@ public class Activity2 extends AppCompatActivity {
 
     @Subscribe public void onMyEvent(MyEvent event) {
         Log.e("otto_demo", "event:" + event.a);
+    }
+
+    @Produce public MyEvent initialGetMyEvent() {
+        MyEvent me = new MyEvent();
+        me.a = 10;
+        return me;
     }
 
     public static class MyEvent {
