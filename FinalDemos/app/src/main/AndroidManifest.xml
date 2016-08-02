@@ -114,7 +114,8 @@
         <activity android:name=".demos.otherlibs.rxbus.Main2Activity" />
         <activity android:name=".demos.otherlibs.otto.OttoDemoActivity" />
         <activity android:name=".demos.otherlibs.otto.Activity2" />
-        <activity android:name=".demos.otherlibs.eventbus.EventBusDemoActivity"></activity>
+        <activity android:name=".demos.otherlibs.eventbus.EventBusDemoActivity" />
+        <activity android:name=".demos.otherlibs.guava.GuavaDemoActivity"></activity>
     </application>
 
 </manifest>
