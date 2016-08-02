@@ -115,7 +115,10 @@
         <activity android:name=".demos.otherlibs.otto.OttoDemoActivity" />
         <activity android:name=".demos.otherlibs.otto.Activity2" />
         <activity android:name=".demos.otherlibs.eventbus.EventBusDemoActivity" />
-        <activity android:name=".demos.otherlibs.guava.GuavaDemoActivity"></activity>
+        <activity android:name=".demos.otherlibs.guava.GuavaDemoActivity" />
+        <activity android:name=".demos.otherlibs.picasso.PicassoDemoActivity" />
+        <activity android:name=".demos.arc.ArcDemosListActivity" />
+        <activity android:name=".demos.arc.mvp.MVPDemoActivity"></activity>
     </application>
 
 </manifest>

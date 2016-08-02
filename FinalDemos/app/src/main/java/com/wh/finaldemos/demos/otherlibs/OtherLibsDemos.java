@@ -5,6 +5,7 @@ import com.wh.finaldemos.demos.otherlibs.butterknife.ButterKnifeDemo;
 import com.wh.finaldemos.demos.otherlibs.eventbus.EventBusDemo;
 import com.wh.finaldemos.demos.otherlibs.guava.GuavaDemo;
 import com.wh.finaldemos.demos.otherlibs.otto.OttoDemo;
+import com.wh.finaldemos.demos.otherlibs.picasso.PicassoDemo;
 import com.wh.finaldemos.demos.otherlibs.retrofit.RetrofitDemo;
 import com.wh.finaldemos.demos.otherlibs.rxjava.RXDemo;
 
@@ -22,7 +23,8 @@ public class OtherLibsDemos extends DemoGroup {
             RXDemo.class,
             OttoDemo.class,
             EventBusDemo.class,
-            GuavaDemo.class
+            GuavaDemo.class,
+            PicassoDemo.class
     };
 
     @Override

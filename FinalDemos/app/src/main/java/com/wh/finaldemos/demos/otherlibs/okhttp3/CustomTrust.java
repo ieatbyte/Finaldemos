@@ -44,7 +44,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 public final class CustomTrust {
     private final OkHttpClient client;
 
-    private final static boolean HTTP_FLAG = false; // false is online server, true is test server
+    private final static boolean HTTP_FLAG = true; // false is online server, true is test server
 
     public CustomTrust() {
         X509TrustManager trustManager;

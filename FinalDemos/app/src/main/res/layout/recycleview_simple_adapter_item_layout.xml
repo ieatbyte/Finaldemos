@@ -10,6 +10,7 @@
         android:text="hello world."/>
 
     <com.whlib.alib.widget.CircelImageView
+        android:id="@+id/logo"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/lenna"
