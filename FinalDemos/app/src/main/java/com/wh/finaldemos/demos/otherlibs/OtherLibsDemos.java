@@ -2,6 +2,7 @@ package com.wh.finaldemos.demos.otherlibs;
 
 import com.wh.finaldemos.DemoGroup;
 import com.wh.finaldemos.demos.otherlibs.butterknife.ButterKnifeDemo;
+import com.wh.finaldemos.demos.otherlibs.dagger2.Dagger2Demo;
 import com.wh.finaldemos.demos.otherlibs.eventbus.EventBusDemo;
 import com.wh.finaldemos.demos.otherlibs.guava.GuavaDemo;
 import com.wh.finaldemos.demos.otherlibs.otto.OttoDemo;
@@ -24,7 +25,8 @@ public class OtherLibsDemos extends DemoGroup {
             OttoDemo.class,
             EventBusDemo.class,
             GuavaDemo.class,
-            PicassoDemo.class
+            PicassoDemo.class,
+            Dagger2Demo.class
     };
 
     @Override

@@ -118,7 +118,8 @@
         <activity android:name=".demos.otherlibs.guava.GuavaDemoActivity" />
         <activity android:name=".demos.otherlibs.picasso.PicassoDemoActivity" />
         <activity android:name=".demos.arc.ArcDemosListActivity" />
-        <activity android:name=".demos.arc.mvp.MVPDemoActivity"></activity>
+        <activity android:name=".demos.arc.mvp.MVPDemoActivity" />
+        <activity android:name=".demos.otherlibs.dagger2.Dagger2DemoActivity"></activity>
     </application>
 
 </manifest>
