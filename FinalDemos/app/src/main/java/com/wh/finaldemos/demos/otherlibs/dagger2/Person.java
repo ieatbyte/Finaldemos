@@ -15,12 +15,16 @@ public class Person {
     private String mName;
 
     @Inject
-    public Person(Car car) {
+    public Person(Car car, String name) {
         mCar = car;
-        mName = "name";
+        mName = name;
     }
 
     public Car getCar() {
         return mCar;
+    }
+
+    public String getName() {
+        return mName;
     }
 }

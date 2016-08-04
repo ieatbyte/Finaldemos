@@ -19,7 +19,7 @@ public class BuildPersonModule {
     }
 
     @Provides
-    String providePersonName() {
+    String name() {
         return mName;
     }
 }
