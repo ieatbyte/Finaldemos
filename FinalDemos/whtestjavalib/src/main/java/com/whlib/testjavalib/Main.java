@@ -1,12 +1,12 @@
 package com.whlib.testjavalib;
 
-import com.whlib.testjavalib.string.TryHash;
+import com.whlib.testjavalib.reference.TryIdentityHashCode;
 
 public class Main {
 
     public static void main(String[] args) {
         System.out.println("hello world!");
-        startTry(TryHash.class);
+        startTry(TryIdentityHashCode.class);
     }
 
     public static <T> void startTry(Class<? extends ATry> tryClass) {
