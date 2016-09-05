@@ -3,6 +3,7 @@ package com.wh.finaldemos;
 import com.wh.finaldemos.demos.activity.ActivityDemos;
 import com.wh.finaldemos.demos.animation.AnimationDemos;
 import com.wh.finaldemos.demos.arc.ArcDemos;
+import com.wh.finaldemos.demos.backgroundtask.BackgroundTaskDemos;
 import com.wh.finaldemos.demos.jsongson.JsonGsonDemos;
 import com.wh.finaldemos.demos.otherlibs.OtherLibsDemos;
 import com.wh.finaldemos.demos.resource.ResourceDemos;
@@ -29,7 +30,8 @@ public class TopDemos extends DemoGroup {
             ResourceDemos.class,
             JsonGsonDemos.class,
             OtherLibsDemos.class,
-            ArcDemos.class
+            ArcDemos.class,
+            BackgroundTaskDemos.class
     };
 
     @Override

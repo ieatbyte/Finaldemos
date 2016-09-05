@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".App"
@@ -119,7 +120,15 @@
         <activity android:name=".demos.otherlibs.picasso.PicassoDemoActivity" />
         <activity android:name=".demos.arc.ArcDemosListActivity" />
         <activity android:name=".demos.arc.mvp.MVPDemoActivity" />
-        <activity android:name=".demos.otherlibs.dagger2.Dagger2DemoActivity"></activity>
+        <activity android:name=".demos.otherlibs.dagger2.Dagger2DemoActivity" />
+        <activity android:name=".demos.backgroundtask.jobscheduler.JobSchedulerDemoActivity" />
+        <activity android:name=".demos.backgroundtask.BackgroundTaskDemosActivity" />
+
+        <service
+            android:name=".demos.backgroundtask.jobscheduler.MyJobService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE"></service>
     </application>
 
 </manifest>
