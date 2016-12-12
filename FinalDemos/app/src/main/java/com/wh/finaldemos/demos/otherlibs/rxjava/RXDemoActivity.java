@@ -31,6 +31,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
+import rx.subscriptions.CompositeSubscription;
 
 public class RXDemoActivity extends AppCompatActivity {
 
@@ -40,6 +41,8 @@ public class RXDemoActivity extends AppCompatActivity {
     private Observer<Object> mObserver1;
     private Subscriber<Object> mSub1;
     private Subscription mSubscription1;
+
+    private CompositeSubscription mComSubscription;
 
     public interface GitHubService {
         @GET("users/{user}/repos")
@@ -57,6 +60,21 @@ public class RXDemoActivity extends AppCompatActivity {
         public String full_name;
     }
 
+    public static class ResultItem {
+        public String name;
+
+        public ResultItem(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return "ResultItem{" +
+                    "name='" + name + '\'' +
+                    '}';
+        }
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,17 +82,33 @@ public class RXDemoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_rxdemo);
         ButterKnife.bind(this);
 
-        testRetrofitOnly();
-        testRx();
-        testRxJavaSimple();
-        testRXFlatmap();
+//        testRetrofitOnly();
+//        testRx();
+//        testRxJavaSimple();
+//        testRXFlatmap();
+//
+//        mSubscription1 = RxBus.RxBusHolder.INSTANCE.toObserverable().subscribe(new Action1<Object>() {
+//            @Override
+//            public void call(Object o) {
+//                if (o instanceof TabEvent) {
+//                    Log.e("rx_bus", "i get it tabevnt");
+//                }
+//            }
+//        });
 
-        mSubscription1 = RxBus.RxBusHolder.INSTANCE.toObserverable().subscribe(new Action1<Object>() {
+        mComSubscription = new CompositeSubscription();
+
+        Observable<ResultItem> observable = Observable.create(new Observable.OnSubscribe<ResultItem>() {
+
             @Override
-            public void call(Object o) {
-                if (o instanceof TabEvent) {
-                    Log.e("rx_bus", "i get it tabevnt");
-                }
+            public void call(Subscriber<? super ResultItem> subscriber) {
+
+            }
+        });
+        observable.subscribe(new Action1<ResultItem>() {
+            @Override
+            public void call(ResultItem resultItem) {
+                Log.e("wh_debug", "ResultItem:" + resultItem);
             }
         });
     }
@@ -88,6 +122,7 @@ public class RXDemoActivity extends AppCompatActivity {
         if (mSubscription1 != null && !mSubscription1.isUnsubscribed()) {
             mSubscription1.unsubscribe();
         }
+        mComSubscription.clear();
     }
 
     @OnClick(R.id.but1)
