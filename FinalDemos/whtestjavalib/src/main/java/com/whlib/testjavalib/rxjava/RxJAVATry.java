@@ -7,10 +7,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 import rx.Observable;
-<<<<<<< HEAD
 import rx.Observer;
-=======
->>>>>>> 63f1af156abf53c4dbb21171a2e13b7139da3686
 import rx.Subscriber;
 import rx.functions.Action1;
 import rx.functions.Func1;
@@ -57,14 +54,52 @@ public class RxJAVATry extends ABaseTry {
     public void startTry() {
         super.startTry();
 
-<<<<<<< HEAD
         //try1();
         //try2();
         //try3();
+
+        try4();
+
+        try {
+            Thread.sleep(2000);
+        } catch (Exception e) {
+
+        }
     }
 
     private void try4() {
-                
+        Observable.create(new Observable.OnSubscribe<CA>() {
+
+            @Override
+            public void call(Subscriber<? super CA> subscriber) {
+                subscriber.onNext(new CA("hello 123"));
+                subscriber.onNext(new CA("hello 456"));
+                subscriber.onCompleted();
+                Loger.d("in OnSubscribe call tid:" + getTid());
+            }
+        }).subscribeOn(Schedulers.newThread()).observeOn(Schedulers.newThread()).map(new Func1<CA, String>() {
+
+            @Override
+            public String call(CA ca) {
+                Loger.d("in Observer map call tid:" + getTid() + ", ca:" + ca.name);
+                return ca.name;
+            }
+        }).observeOn(Schedulers.newThread()).subscribe(new Observer<String>() {
+            @Override
+            public void onCompleted() {
+                Loger.d("in Observer onCompleted call tid:" + getTid());
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Loger.d("in Observer onError call tid:" + getTid());
+            }
+
+            @Override
+            public void onNext(String caStr) {
+                Loger.d("in Observer onNext call tid:" + getTid() + ", str:" + caStr);
+            }
+        });
     }
 
     private void try3() {
@@ -147,8 +182,7 @@ public class RxJAVATry extends ABaseTry {
     }
 
     private void try1() {
-=======
->>>>>>> 63f1af156abf53c4dbb21171a2e13b7139da3686
+
         Loger.d("wh_debug startTry tid:" + Thread.currentThread().getId());
 
         Executor exe1 = Executors.newFixedThreadPool(1);
@@ -181,10 +215,7 @@ public class RxJAVATry extends ABaseTry {
                 Loger.d("wh_debug in call tid:" + getTid());
                 subscriber.onNext(ri);
                 subscriber.onNext(new ResultItem("222"));
-<<<<<<< HEAD
                 subscriber.onNext(new ResultItem("333"));
-=======
->>>>>>> 63f1af156abf53c4dbb21171a2e13b7139da3686
             }
         });
 //        observable.subscribeOn(Schedulers.io()).subscribe(new Action1<ResultItem>() {
@@ -193,23 +224,16 @@ public class RxJAVATry extends ABaseTry {
 //                Loger.d("wh_debug ResultItem:" + resultItem);
 //            }
 //        });
-<<<<<<< HEAD
         observable.observeOn(Schedulers.newThread()/*.from(exe3)*/).map(new Func1<ResultItem, CA>() {
-=======
-        observable.observeOn(Schedulers.from(exe3)).map(new Func1<ResultItem, CA>() {
->>>>>>> 63f1af156abf53c4dbb21171a2e13b7139da3686
 
             @Override
             public CA call(ResultItem resultItem) {
                 Loger.d("wh_debug map call:" + resultItem.name + ", tid:" + getTid());
-<<<<<<< HEAD
                 try {
                     Thread.sleep(5 * 1000);
                 } catch (Exception e) {
 
                 }
-=======
->>>>>>> 63f1af156abf53c4dbb21171a2e13b7139da3686
                 return new CA(resultItem.name);
             }
         }).observeOn(Schedulers.from(exe1)).subscribeOn(Schedulers.from(exe2)).subscribe(new Action1<CA>() {
@@ -227,10 +251,5 @@ public class RxJAVATry extends ABaseTry {
         }
     }
 
-<<<<<<< HEAD
-=======
-    private long getTid() {
-        return Thread.currentThread().getId();
-    }
->>>>>>> 63f1af156abf53c4dbb21171a2e13b7139da3686
+
 }
