@@ -7,7 +7,10 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 import rx.Observable;
+<<<<<<< HEAD
 import rx.Observer;
+=======
+>>>>>>> 63f1af156abf53c4dbb21171a2e13b7139da3686
 import rx.Subscriber;
 import rx.functions.Action1;
 import rx.functions.Func1;
@@ -54,6 +57,7 @@ public class RxJAVATry extends ABaseTry {
     public void startTry() {
         super.startTry();
 
+<<<<<<< HEAD
         //try1();
         //try2();
         //try3();
@@ -143,6 +147,8 @@ public class RxJAVATry extends ABaseTry {
     }
 
     private void try1() {
+=======
+>>>>>>> 63f1af156abf53c4dbb21171a2e13b7139da3686
         Loger.d("wh_debug startTry tid:" + Thread.currentThread().getId());
 
         Executor exe1 = Executors.newFixedThreadPool(1);
@@ -175,7 +181,10 @@ public class RxJAVATry extends ABaseTry {
                 Loger.d("wh_debug in call tid:" + getTid());
                 subscriber.onNext(ri);
                 subscriber.onNext(new ResultItem("222"));
+<<<<<<< HEAD
                 subscriber.onNext(new ResultItem("333"));
+=======
+>>>>>>> 63f1af156abf53c4dbb21171a2e13b7139da3686
             }
         });
 //        observable.subscribeOn(Schedulers.io()).subscribe(new Action1<ResultItem>() {
@@ -184,16 +193,23 @@ public class RxJAVATry extends ABaseTry {
 //                Loger.d("wh_debug ResultItem:" + resultItem);
 //            }
 //        });
+<<<<<<< HEAD
         observable.observeOn(Schedulers.newThread()/*.from(exe3)*/).map(new Func1<ResultItem, CA>() {
+=======
+        observable.observeOn(Schedulers.from(exe3)).map(new Func1<ResultItem, CA>() {
+>>>>>>> 63f1af156abf53c4dbb21171a2e13b7139da3686
 
             @Override
             public CA call(ResultItem resultItem) {
                 Loger.d("wh_debug map call:" + resultItem.name + ", tid:" + getTid());
+<<<<<<< HEAD
                 try {
                     Thread.sleep(5 * 1000);
                 } catch (Exception e) {
 
                 }
+=======
+>>>>>>> 63f1af156abf53c4dbb21171a2e13b7139da3686
                 return new CA(resultItem.name);
             }
         }).observeOn(Schedulers.from(exe1)).subscribeOn(Schedulers.from(exe2)).subscribe(new Action1<CA>() {
@@ -211,4 +227,10 @@ public class RxJAVATry extends ABaseTry {
         }
     }
 
+<<<<<<< HEAD
+=======
+    private long getTid() {
+        return Thread.currentThread().getId();
+    }
+>>>>>>> 63f1af156abf53c4dbb21171a2e13b7139da3686
 }
