@@ -27,5 +27,6 @@ public class TryFormat extends ABaseTry {
 //        System.out.println(a);
 //        System.out.println(String.format(a, "/a/b", "zh_CN"));
         System.out.println(String.format(s2.toString(), "/a/b", "zh_CN"));
+
     }
 }
