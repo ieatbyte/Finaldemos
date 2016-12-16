@@ -4,6 +4,7 @@ import com.wh.finaldemos.DemoGroup;
 import com.wh.finaldemos.demos.otherlibs.butterknife.ButterKnifeDemo;
 import com.wh.finaldemos.demos.otherlibs.dagger2.Dagger2Demo;
 import com.wh.finaldemos.demos.otherlibs.eventbus.EventBusDemo;
+import com.wh.finaldemos.demos.otherlibs.greendao.GreenDAODemo;
 import com.wh.finaldemos.demos.otherlibs.guava.GuavaDemo;
 import com.wh.finaldemos.demos.otherlibs.otto.OttoDemo;
 import com.wh.finaldemos.demos.otherlibs.picasso.PicassoDemo;
@@ -26,7 +27,8 @@ public class OtherLibsDemos extends DemoGroup {
             EventBusDemo.class,
             GuavaDemo.class,
             PicassoDemo.class,
-            Dagger2Demo.class
+            Dagger2Demo.class,
+            GreenDAODemo.class
     };
 
     @Override
