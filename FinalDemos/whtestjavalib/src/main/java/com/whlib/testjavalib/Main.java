@@ -1,13 +1,12 @@
 package com.whlib.testjavalib;
 
-import com.whlib.testjavalib.rxjava.RxJAVATry;
-import com.whlib.testjavalib.string.TryFormat;
+import com.whlib.testjavalib.guava.TryGuava;
 
 public class Main {
 
     public static void main(String[] args) {
         System.out.println("hello world!");
-        startTry(RxJAVATry.class);
+        startTry(TryGuava.class);
     }
 
     public static <T> void startTry(Class<? extends ATry> tryClass) {
