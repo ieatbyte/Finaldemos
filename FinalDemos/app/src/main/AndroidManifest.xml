@@ -133,7 +133,8 @@
         <activity
             android:name=".demos.otherlibs.greendao.GreenDAODemoActivity"
             android:label="@string/title_activity_green_daodemo"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".demos.otherlibs.rxbinding.RxBindingDemoActivity"></activity>
     </application>
 
 </manifest>

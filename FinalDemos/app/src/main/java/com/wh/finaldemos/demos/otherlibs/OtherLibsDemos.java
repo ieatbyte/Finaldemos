@@ -9,6 +9,7 @@ import com.wh.finaldemos.demos.otherlibs.guava.GuavaDemo;
 import com.wh.finaldemos.demos.otherlibs.otto.OttoDemo;
 import com.wh.finaldemos.demos.otherlibs.picasso.PicassoDemo;
 import com.wh.finaldemos.demos.otherlibs.retrofit.RetrofitDemo;
+import com.wh.finaldemos.demos.otherlibs.rxbinding.RxBindingDemo;
 import com.wh.finaldemos.demos.otherlibs.rxjava.RXDemo;
 
 /**
@@ -28,7 +29,8 @@ public class OtherLibsDemos extends DemoGroup {
             GuavaDemo.class,
             PicassoDemo.class,
             Dagger2Demo.class,
-            GreenDAODemo.class
+            GreenDAODemo.class,
+            RxBindingDemo.class
     };
 
     @Override

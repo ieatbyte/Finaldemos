@@ -5,14 +5,16 @@ import com.whlib.testjavalib.Loger;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
 import rx.Observer;
 import rx.Subscriber;
+import rx.functions.Action0;
 import rx.functions.Action1;
 import rx.functions.Func1;
+import rx.functions.Func2;
 import rx.schedulers.Schedulers;
-import sun.rmi.runtime.Log;
 
 /**
  * Created by wanghui on 16-11-18.
@@ -58,13 +60,239 @@ public class RxJAVATry extends ABaseTry {
         //try2();
         //try3();
 
-        try4();
+        //try4();
+
+        tryRetryWhen();
+
+        //try5();
+
+        //tryRetry();
+
+        //try6();
 
         try {
-            Thread.sleep(2000);
+            Loger.d("sleeping start...");
+            Thread.sleep(10 * 1000);
+            Loger.d("sleeping end...");
         } catch (Exception e) {
 
         }
+    }
+
+    private void try6() {
+        Observable.create(new Observable.OnSubscribe<String>() {
+
+            @Override
+            public void call(Subscriber<? super String> subscriber) {
+                subscriber.onNext("helloOne");
+                subscriber.onNext("helloTwo");
+                subscriber.onNext("helloThree");
+                subscriber.onNext("helloFour");
+                subscriber.onNext("helloFive");
+                subscriber.onCompleted();
+            }
+        }).zipWith(Observable.range(1, 3), new Func2<String, Integer, String>() {
+            @Override
+            public String call(String s, Integer integer) {
+                return s + integer;
+            }
+        }).subscribe(new Observer<String>() {
+            @Override
+            public void onCompleted() {
+                Loger.d("in onCompleted.");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Loger.d("in onError.");
+            }
+
+            @Override
+            public void onNext(String integer) {
+                Loger.d("in onNext." + integer);
+            }
+        });
+    }
+
+    private void tryRetry() {
+//        Observable.create(new Observable.OnSubscribe<String>() {
+//
+//            @Override
+//            public void call(Subscriber<? super String> subscriber) {
+//                System.out.println("in call, " + "subscribing");
+//                try {
+//                    Thread.sleep(1000);
+//                } catch (Exception e) {
+//
+//                }
+//                subscriber.onError(new RuntimeException("always fails"));
+//            }
+//        }).retry(3).subscribe(new Observer<String>() {
+//            @Override
+//            public void onCompleted() {
+//                Loger.d("in onCompleted.");
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//                Loger.d("in onError.");
+//            }
+//
+//            @Override
+//            public void onNext(String s) {
+//                Loger.d("in onNext.");
+//            }
+//        });
+
+        Observable.create(new Observable.OnSubscribe<String>() {
+
+            @Override
+            public void call(Subscriber<? super String> subscriber) {
+                System.out.println("in call2, " + "subscribing");
+                try {
+                    Thread.sleep(1000);
+                } catch (Exception e) {
+
+                }
+                subscriber.onError(new RuntimeException("always fails"));
+            }
+        }).retry(new Func2<Integer, Throwable, Boolean>() {
+            @Override
+            public Boolean call(Integer integer, Throwable throwable) {
+                System.out.println("in retry call2, " + integer);
+                return integer <= 3;
+            }
+        }).subscribe(new Observer<String>() {
+            @Override
+            public void onCompleted() {
+                Loger.d("in onCompleted2.");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Loger.d("in onError2.");
+            }
+
+            @Override
+            public void onNext(String s) {
+                Loger.d("in onNext2.");
+            }
+        });
+
+    }
+
+
+    private void try5() {
+        Observable.timer(2, TimeUnit.SECONDS).subscribe(new Action1<Long>() {
+            @Override
+            public void call(Long aLong) {
+                Loger.d("in call, " + aLong);
+            }
+        }, new Action1<Throwable>() {
+            @Override
+            public void call(Throwable throwable) {
+                Loger.d("in error" + throwable);
+            }
+        }, new Action0() {
+            @Override
+            public void call() {
+                Loger.d("in completed.");
+            }
+        });
+    }
+
+    private void tryRetryWhen() {
+//        Observable.create((Subscriber s) -> {
+//            System.out.println("subscribing");
+//            s.onError(new RuntimeException("always fails"));
+//        }).retryWhen(attempts -> {
+//            return attempts.zipWith(Observable.range(1, 3), (n, i) -> i).flatMap(i -> {
+//                System.out.println("delay retry by " + i + " second(s)");
+//                return Observable.timer(i, TimeUnit.SECONDS);
+//            });
+//        }).toBlocking().forEach(System.out::println);
+
+        Observable.create(new Observable.OnSubscribe<String>() {
+
+            @Override
+            public void call(Subscriber<? super String> subscriber) {
+                System.out.println("in call, " + "subscribing");
+                subscriber.onError(new RuntimeException("always fails"));
+            }
+        }).retryWhen(new Func1<Observable<? extends Throwable>, Observable<?>>() {
+            @Override
+            public Observable<?> call(Observable<? extends Throwable> observable) {
+
+                return observable.zipWith(Observable.range(1, 3), new Func2<Throwable, Integer, Integer>() {
+                    @Override
+                    public Integer call(Throwable throwable, Integer integer) {
+                        return integer;
+                    }
+                }).flatMap(new Func1<Integer, Observable<?>>() {
+                    @Override
+                    public Observable<?> call(Integer integer) {
+                        System.out.println("delay retry by " + integer + " second(s)");
+                        return Observable.timer(integer, TimeUnit.SECONDS);
+                    }
+                });
+            }
+        }).subscribe(new Observer<String>() {
+            @Override
+            public void onCompleted() {
+                Loger.d("in onCompleted.");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Loger.d("in onError.");
+            }
+
+            @Override
+            public void onNext(String s) {
+                Loger.d("in onNext.");
+            }
+        });
+//                .toBlocking().forEach(new Action1<String>() {
+//            @Override
+//            public void call(String s) {
+//                System.out.println("in foreach, " + s);
+//            }
+//        });
+
+//        Observable.create(new Observable.OnSubscribe<String>() {
+//
+//            @Override
+//            public void call(Subscriber<? super String> subscriber) {
+//                System.out.println("in call, " + "subscribing");
+//                try {
+//                    Thread.sleep(1000);
+//                } catch (Exception e) {
+//
+//                }
+//                subscriber.onError(new RuntimeException("always fails"));
+//            }
+//        }).retryWhen(new Func1<Observable<? extends Throwable>, Observable<?>>() {
+//            @Override
+//            public Observable<?> call(Observable<? extends Throwable> observable) {
+//
+//                return observable;
+//            }
+//        }).subscribe(new Observer<String>() {
+//            @Override
+//            public void onCompleted() {
+//                Loger.d("in onCompleted.");
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//                Loger.d("in onError.");
+//            }
+//
+//            @Override
+//            public void onNext(String s) {
+//                Loger.d("in onNext.");
+//            }
+//        });
     }
 
     private void try4() {

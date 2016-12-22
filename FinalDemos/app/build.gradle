@@ -64,4 +64,6 @@ dependencies {
     compile 'com.google.guava:guava:19.0'
 
     compile 'org.greenrobot:greendao:3.2.0'
+
+    compile 'com.jakewharton.rxbinding:rxbinding:1.0.0'
 }
