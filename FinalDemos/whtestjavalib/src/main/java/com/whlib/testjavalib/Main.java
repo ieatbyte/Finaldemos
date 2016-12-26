@@ -1,12 +1,12 @@
 package com.whlib.testjavalib;
 
-import com.whlib.testjavalib.rxjava.RxJAVATry;
+import com.whlib.testjavalib.gson.TryGson;
 
 public class Main {
 
     public static void main(String[] args) {
         System.out.println("hello world!");
-        startTry(RxJAVATry.class);
+        startTry(TryGson.class);
     }
 
     public static <T> void startTry(Class<? extends ATry> tryClass) {
