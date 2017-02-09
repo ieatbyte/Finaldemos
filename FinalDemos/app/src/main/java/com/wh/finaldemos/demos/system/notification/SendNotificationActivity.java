@@ -4,6 +4,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
@@ -32,7 +33,7 @@ public class SendNotificationActivity extends BaseDemoActivity {
 
     @OnClick(R.id.send_noti)
     void onSendClick() {
-        sendNotification();
+        sendNotificationWithBigImg();
     }
 
     private void sendNotification() {
@@ -50,6 +51,31 @@ public class SendNotificationActivity extends BaseDemoActivity {
                 .setContentTitle("My notification")
                 .setContentText("Hello World!")
                 .setContentIntent(resultPendingIntent);
+        NotificationManager mNotificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        mNotificationManager.notify(id, builder.build());
+
+    }
+
+    private void sendNotificationWithBigImg() {
+        Intent resultIntent = new Intent(this, SendNotificationActivity.class);
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+// Adds the back stack
+        stackBuilder.addParentStack(SendNotificationActivity.class);
+// Adds the Intent to the top of the stack
+        stackBuilder.addNextIntent(resultIntent);
+// Gets a PendingIntent containing the entire back stack
+        PendingIntent resultPendingIntent =
+                stackBuilder.getPendingIntent(0, PendingIntent.FLAG_CANCEL_CURRENT);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+        NotificationCompat.BigPictureStyle style = new NotificationCompat.BigPictureStyle();
+        style.setBigContentTitle("big title");
+        style.setSummaryText("summery text");
+        style.bigPicture(BitmapFactory.decodeResource(getResources(), R.drawable.lenna));
+        builder.setSmallIcon(R.drawable.v2_loading).setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.lenna))
+                .setContentTitle("My notification")
+                .setContentText("Hello World!").setDefaults(NotificationCompat.DEFAULT_ALL).setAutoCancel(true).setPriority(NotificationCompat.PRIORITY_MAX)
+                .setContentIntent(resultPendingIntent).setStyle(style);
         NotificationManager mNotificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         mNotificationManager.notify(id, builder.build());
