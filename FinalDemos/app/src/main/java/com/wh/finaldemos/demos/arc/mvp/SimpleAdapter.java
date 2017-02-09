@@ -9,9 +9,9 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.wh.finaldemos.R;
 import com.wh.finaldemos.Utils;
-import com.wh.finaldemos.demos.otherlibs.picasso.PicassoTrustAll;
 import com.whlib.alib.Utils.VersionHelper;
 
 import java.util.ArrayList;
@@ -67,7 +67,8 @@ public class SimpleAdapter extends RecyclerView.Adapter {
         realHolder.mTitleTextView.setText(item.title);
         String url = Utils.DEBUG_IMAGES_URL[position % Utils.DEBUG_IMAGES_URL.length];
         //Picasso.with(mContext).load(url).tag(url).placeholder(R.mipmap.ic_launcher).error(R.drawable.icon_add).into(realHolder.mLogoView);
-        PicassoTrustAll.getInstance(mContext).load(url).tag(url).placeholder(R.mipmap.ic_launcher).error(R.drawable.icon_add).into(realHolder.mLogoView);
+        //PicassoTrustAll.getInstance(mContext).load(url).tag(url).placeholder(R.mipmap.ic_launcher).error(R.drawable.icon_add).into(realHolder.mLogoView);
+        Glide.with(mContext).load(url).placeholder(R.mipmap.ic_launcher).dontAnimate().into(realHolder.mLogoView);
     }
 
     @Override

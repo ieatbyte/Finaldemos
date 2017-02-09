@@ -7,6 +7,7 @@ import com.wh.finaldemos.demos.backgroundtask.BackgroundTaskDemos;
 import com.wh.finaldemos.demos.jsongson.JsonGsonDemos;
 import com.wh.finaldemos.demos.otherlibs.OtherLibsDemos;
 import com.wh.finaldemos.demos.resource.ResourceDemos;
+import com.wh.finaldemos.demos.system.SystemDemos;
 import com.wh.finaldemos.demos.textshow.TextShowDemos;
 import com.wh.finaldemos.demos.uiproperty.UiPropertyDemos;
 
@@ -31,7 +32,8 @@ public class TopDemos extends DemoGroup {
             JsonGsonDemos.class,
             OtherLibsDemos.class,
             ArcDemos.class,
-            BackgroundTaskDemos.class
+            BackgroundTaskDemos.class,
+            SystemDemos.class
     };
 
     @Override

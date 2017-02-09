@@ -1,12 +1,12 @@
 package com.whlib.testjavalib;
 
-import com.whlib.testjavalib.gson.TryGson;
+import com.whlib.testjavalib.algorithms.TryFabonacci;
 
 public class Main {
 
     public static void main(String[] args) {
         System.out.println("hello world!");
-        startTry(TryGson.class);
+        startTry(TryFabonacci.class);
     }
 
     public static <T> void startTry(Class<? extends ATry> tryClass) {

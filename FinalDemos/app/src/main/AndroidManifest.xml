@@ -134,7 +134,18 @@
             android:name=".demos.otherlibs.greendao.GreenDAODemoActivity"
             android:label="@string/title_activity_green_daodemo"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".demos.otherlibs.rxbinding.RxBindingDemoActivity"></activity>
+        <activity android:name=".demos.otherlibs.rxbinding.RxBindingDemoActivity" />
+        <activity android:name=".demos.system.SystemDemosActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
+        <activity android:name=".demos.system.notification.SendNotificationActivity"
+            android:parentActivityName=".demos.system.SystemDemosActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".demos.system.SystemDemosActivity"/>
+        </activity>
     </application>
 
 </manifest>
