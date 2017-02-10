@@ -7,6 +7,7 @@ import com.wh.finaldemos.demos.textshow.MaxLength.MaxLengthDemo;
 import com.wh.finaldemos.demos.textshow.Path.PathShowDemo;
 import com.wh.finaldemos.demos.textshow.StaticLayout.StaticLayoutDemo;
 import com.wh.finaldemos.demos.textshow.SysInfo.SysInfoShowDemo;
+import com.wh.finaldemos.demos.textshow.autolink.AutoLinkDemo;
 
 /**
  * Created by wanghui5-s on 2015/12/19.
@@ -22,7 +23,8 @@ public class TextShowDemos extends DemoGroup {
             SysInfoShowDemo.class,
             EnterSpaceDemo.class,
             StaticLayoutDemo.class,
-            MaxLengthDemo.class
+            MaxLengthDemo.class,
+            AutoLinkDemo.class
     };
 
     @Override

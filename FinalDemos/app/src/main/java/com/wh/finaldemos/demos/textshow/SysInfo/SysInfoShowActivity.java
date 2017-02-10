@@ -2,6 +2,8 @@ package com.wh.finaldemos.demos.textshow.SysInfo;
 
 import android.app.ActivityManager;
 import android.content.Context;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -23,6 +25,7 @@ public class SysInfoShowActivity extends BaseDemoActivity {
 
     private String buildSysInfo() {
         StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("wifi info:" + getBSSID());
         stringBuilder.append("androidVersionCode=" + Build.VERSION.SDK_INT + "\n\n");
         Field[] fields = Build.class.getDeclaredFields();
         for (Field field : fields) {
@@ -38,5 +41,14 @@ public class SysInfoShowActivity extends BaseDemoActivity {
         stringBuilder.append("MemoryClass=" + String.valueOf(am.getMemoryClass()) + "\n\n");
         stringBuilder.append("DisplayMetrics=" + getResources().getDisplayMetrics().toString() + "\n\n");
         return stringBuilder.toString();
+    }
+
+    private String getBSSID() {
+        String result = "EMPTY";
+        WifiInfo wi = ((WifiManager) getSystemService(Context.WIFI_SERVICE)).getConnectionInfo();
+        if (wi != null) {
+            result = "bssid:" + wi.getBSSID() + ", mac:" + wi.getMacAddress() + ", ssid:" + wi.getSSID() + ", network_id:" + wi.getNetworkId() + ", rssi:" + wi.getRssi();
+        }
+        return result;
     }
 }

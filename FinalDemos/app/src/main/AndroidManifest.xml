@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:name=".App"
@@ -135,17 +136,19 @@
             android:label="@string/title_activity_green_daodemo"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".demos.otherlibs.rxbinding.RxBindingDemoActivity" />
-        <activity android:name=".demos.system.SystemDemosActivity" >
+        <activity android:name=".demos.system.SystemDemosActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+                android:value=".MainActivity" />
         </activity>
-        <activity android:name=".demos.system.notification.SendNotificationActivity"
+        <activity
+            android:name=".demos.system.notification.SendNotificationActivity"
             android:parentActivityName=".demos.system.SystemDemosActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".demos.system.SystemDemosActivity"/>
+                android:value=".demos.system.SystemDemosActivity" />
         </activity>
+        <activity android:name=".demos.textshow.autolink.AutoLinkDemoActivity"></activity>
     </application>
 
 </manifest>
