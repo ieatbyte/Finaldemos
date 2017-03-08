@@ -2,13 +2,13 @@ apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 
 android {
-    compileSdkVersion 24
+    compileSdkVersion COMPILE_SDK_VERSION as int
     buildToolsVersion BUILD_TOOLS_VERSION as String
 
     defaultConfig {
         applicationId "com.wh.finaldemos"
-        minSdkVersion 15
-        targetSdkVersion 23
+        minSdkVersion MIN_SDK_VERSION as int
+        targetSdkVersion TARGET_SDK_VERSION as int
         versionCode 1
         versionName "1.0"
     }
@@ -36,7 +36,7 @@ greendao {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile "com.android.support:appcompat-v7:${SUPPORT_V7_VERSION}"
     compile 'com.android.support:design:24.2.1'
     compile 'com.android.support:palette-v7:+'
     compile project(':whalib')
