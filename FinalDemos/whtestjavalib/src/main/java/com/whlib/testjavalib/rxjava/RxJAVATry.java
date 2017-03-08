@@ -15,12 +15,17 @@ import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.functions.Func2;
 import rx.schedulers.Schedulers;
+import rx.subjects.PublishSubject;
+import rx.subjects.SerializedSubject;
+import rx.subjects.Subject;
 
 /**
  * Created by wanghui on 16-11-18.
  */
 
 public class RxJAVATry extends ABaseTry {
+
+    private Subject<CA, CA> mPublishSubject;
 
     public static class ResultItem {
         public String name;
@@ -62,13 +67,15 @@ public class RxJAVATry extends ABaseTry {
 
         //try4();
 
-        tryRetryWhen();
+        //tryRetryWhen();
 
         //try5();
 
         //tryRetry();
 
         //try6();
+
+
 
         try {
             Loger.d("sleeping start...");
@@ -77,6 +84,13 @@ public class RxJAVATry extends ABaseTry {
         } catch (Exception e) {
 
         }
+    }
+
+    private void try7() {
+        mPublishSubject = new SerializedSubject(PublishSubject.create());
+
+//        mPublishSubject
+
     }
 
     private void try6() {

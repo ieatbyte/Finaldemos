@@ -4,10 +4,13 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.widget.Button;
 
 import com.wh.finaldemos.BaseDemoActivity;
@@ -72,7 +75,19 @@ public class SendNotificationActivity extends BaseDemoActivity {
         style.setBigContentTitle("big title");
         style.setSummaryText("summery text");
         style.bigPicture(BitmapFactory.decodeResource(getResources(), R.drawable.lenna));
-        builder.setSmallIcon(R.drawable.v2_loading).setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.lenna))
+        BitmapFactory.Options ops = new BitmapFactory.Options();
+        ops.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(getResources(), R.drawable.lenna, ops);
+        Log.e("SendNotificationActivity", ", outWidth:" + ops.outWidth + ", outHeight:" + ops.outHeight + ", sys width:" + getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_width));
+        //int sampleSize = ops.outHeight / getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_height);
+        int sampleSize = ops.outWidth / getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_width);
+        ops = new BitmapFactory.Options();
+        ops.inJustDecodeBounds = false;
+        ops.inSampleSize = sampleSize;
+        ops.inDensity = getResources().getDisplayMetrics().densityDpi; //DisplayMetrics.DENSITY_HIGH;
+        Bitmap largeIcon = BitmapFactory.decodeResource(getResources(), R.drawable.lenna, ops);
+        Log.e("SendNotificationActivity", "dpi:" + getResources().getDisplayMetrics().densityDpi + ", sampleSize:" + sampleSize + ", outWidth:" + ops.outWidth + ", outHeight:" + ops.outHeight + ", sys width:" + getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_width) + ", realWidth:" + largeIcon.getWidth() + ", realHeight:" + largeIcon.getHeight());
+        builder.setSmallIcon(R.drawable.v2_loading).setLargeIcon(largeIcon)
                 .setContentTitle("My notification")
                 .setContentText("Hello World!").setDefaults(NotificationCompat.DEFAULT_ALL).setAutoCancel(true).setPriority(NotificationCompat.PRIORITY_MAX)
                 .setContentIntent(resultPendingIntent).setStyle(style);
