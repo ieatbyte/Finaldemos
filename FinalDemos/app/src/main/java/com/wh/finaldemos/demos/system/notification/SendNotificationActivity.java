@@ -1,5 +1,6 @@
 package com.wh.finaldemos.demos.system.notification;
 
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -9,7 +10,6 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.Button;
 
@@ -91,9 +91,12 @@ public class SendNotificationActivity extends BaseDemoActivity {
                 .setContentTitle("My notification")
                 .setContentText("Hello World!").setDefaults(NotificationCompat.DEFAULT_ALL).setAutoCancel(true).setPriority(NotificationCompat.PRIORITY_MAX)
                 .setContentIntent(resultPendingIntent).setStyle(style);
+        Notification notification =  builder.build();
+        //notification.defaults &= ~android.support.v7.app.NotificationCompat.DEFAULT_VIBRATE;
+        //notification.defaults &= ~android.support.v7.app.NotificationCompat.DEFAULT_SOUND;
         NotificationManager mNotificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        mNotificationManager.notify(id, builder.build());
+        mNotificationManager.notify(id, notification);
 
     }
 }
