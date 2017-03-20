@@ -4,18 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
     tools:context="com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.ComplexGridDemoActivityFragment"
-    tools:showIn="@layout/activity_complex_grid_demo"
-    android:descendantFocusability="blocksDescendants">
+    tools:showIn="@layout/activity_complex_grid_demo">
 
     <!--<android.support.v7.widget.RecyclerView-->
-        <!--android:id="@+id/listview"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent" />-->
+    <!--android:id="@+id/listview"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent" />-->
 
-    <com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.RecyclerViewForDebug
-        android:id="@+id/listview"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+        <com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.RecyclerViewForDebug
+            android:id="@+id/listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <FrameLayout
+            android:id="@+id/list_dock_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:clickable="true"
+            android:visibility="gone" />
+    </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>

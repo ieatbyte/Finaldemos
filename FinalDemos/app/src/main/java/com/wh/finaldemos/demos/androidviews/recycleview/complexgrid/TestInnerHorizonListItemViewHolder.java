@@ -16,7 +16,7 @@ import butterknife.BindView;
  */
 
 // TODO save layoutmanager instance and restore out of item data model structure
-public class TestInnerHorizonListItemViewHolder extends GridSpannableItemViewHolder {
+public class TestInnerHorizonListItemViewHolder extends GridSpannableItemViewHolder<TestInnerHorizonListItemVM> {
 
     @BindView(R.id.inner_list)
     RecyclerView innerListView;
@@ -40,7 +40,7 @@ public class TestInnerHorizonListItemViewHolder extends GridSpannableItemViewHol
     }
 
     @Override
-    public void bind(GridSpannableItemVM item) {
+    public void bind(TestInnerHorizonListItemVM item) {
 //        Exception e = new Exception();
 //        Log.e("TMP_TRACE_TEST_INNER", "bind", e);
         if (item instanceof TestInnerHorizonListItemVM) {

@@ -7,8 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import com.wh.finaldemos.R;
+import com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.docktop.RecyclerViewDockTopHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,6 +28,8 @@ public class ComplexGridDemoActivityFragment extends Fragment {
     private GridLayoutManager mLayoutManager;
 
     private TestGridListDemoAdapter mAdapter;
+
+    private RecyclerViewDockTopHelper mRecyclerViewDockTopHelper;
 
     public ComplexGridDemoActivityFragment() {
     }
@@ -54,5 +58,7 @@ public class ComplexGridDemoActivityFragment extends Fragment {
         mListView.setAdapter(mAdapter);
 //        mListView.setItemViewCacheSize(2);
      //   mListView.getRecycledViewPool().setMaxRecycledViews(TestGridListDemoAdapter.VIEW_TYPE_CELL_HORIZON_LIST_INNER, 10);
+        mRecyclerViewDockTopHelper = new RecyclerViewDockTopHelper(mListView, mAdapter);
+        mRecyclerViewDockTopHelper.setDockItemViewWrapper((FrameLayout) mRootView.findViewById(R.id.list_dock_item));
     }
 }

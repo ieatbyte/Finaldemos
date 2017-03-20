@@ -12,7 +12,7 @@ import butterknife.BindView;
  * Created by wanghui on 17-3-16.
  */
 
-public class TestCell1ItemViewHolder extends GridSpannableItemViewHolder {
+public class TestCell1ItemViewHolder extends GridSpannableItemViewHolder<TestGroup1ItemVM> {
 
     @BindView(R.id.item_title)
     TextView titleView;
@@ -25,7 +25,7 @@ public class TestCell1ItemViewHolder extends GridSpannableItemViewHolder {
     }
 
     @Override
-    public void bind(GridSpannableItemVM item) {
+    public void bind(TestGroup1ItemVM item) {
         if (item instanceof TestGroup1ItemVM) {
             TestGroup1ItemVM realItem = (TestGroup1ItemVM)item;
             titleView.setText(realItem.getTitle());

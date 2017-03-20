@@ -11,7 +11,7 @@ import butterknife.BindView;
  * Created by wanghui on 17-3-16.
  */
 
-public class TestSplit1ItemViewHolder extends GridSpannableItemViewHolder {
+public class TestSplit1ItemViewHolder extends GridSpannableItemViewHolder<TestSplit1ItemVM> {
 
     @BindView(R.id.item_title)
     TextView titleView;
@@ -21,7 +21,7 @@ public class TestSplit1ItemViewHolder extends GridSpannableItemViewHolder {
     }
 
     @Override
-    public void bind(GridSpannableItemVM item) {
+    public void bind(TestSplit1ItemVM item) {
         if (item instanceof TestSplit1ItemVM) {
             TestSplit1ItemVM realItem = (TestSplit1ItemVM)item;
             titleView.setText(realItem.getTitle1());

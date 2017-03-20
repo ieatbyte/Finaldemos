@@ -9,7 +9,7 @@ import butterknife.ButterKnife;
  * Created by wanghui on 17-3-16.
  */
 
-public abstract class GridSpannableItemViewHolder extends RecyclerView.ViewHolder {
+public abstract class GridSpannableItemViewHolder<T extends IGridItemViewModel> extends RecyclerView.ViewHolder {
 
     protected View mItemView;
 
@@ -19,5 +19,5 @@ public abstract class GridSpannableItemViewHolder extends RecyclerView.ViewHolde
         mItemView = itemView;
     }
 
-    public abstract void bind(GridSpannableItemVM item);
+    public abstract void bind(T item);
 }

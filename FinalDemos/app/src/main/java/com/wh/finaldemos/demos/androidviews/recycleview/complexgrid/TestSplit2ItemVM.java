@@ -11,6 +11,7 @@ public class TestSplit2ItemVM extends GridSpannableSplitItemVM {
     private String title2;
 
     public TestSplit2ItemVM(String title1, String title2) {
+        super(null);
         this.title1 = title1;
         this.title2 = title2;
     }
@@ -22,4 +23,5 @@ public class TestSplit2ItemVM extends GridSpannableSplitItemVM {
     public String getTitle2() {
         return title2;
     }
+
 }

@@ -4,22 +4,17 @@ package com.wh.finaldemos.demos.androidviews.recycleview.complexgrid;
  * Created by wanghui on 17-3-16.
  */
 
-public class TestGroup1ItemVM extends GridSpannableOneSpanItemVM {
+public class TestGroup1ItemVM extends GridSpannableOneSpanItemVM<TestGroup1Item> {
 
-    private String title;
-
-    private int iconDrawableId;
-
-    public TestGroup1ItemVM(String title, int iconDrawableId) {
-        this.title = title;
-        this.iconDrawableId = iconDrawableId;
+    public TestGroup1ItemVM(TestGroup1Item gridItem) {
+        super(gridItem);
     }
 
     public String getTitle() {
-        return title;
+        return gridItem.getTitle();
     }
 
     public int getIconDrawableId() {
-        return iconDrawableId;
+        return gridItem.getIconDrawableId();
     }
 }

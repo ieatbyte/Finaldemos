@@ -9,6 +9,7 @@ public class TestSplit1ItemVM extends GridSpannableSplitItemVM {
     private String title1;
 
     public TestSplit1ItemVM(String title1) {
+        super(null);
         this.title1 = title1;
     }
 

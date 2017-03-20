@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.wh.finaldemos.R;
+import com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.docktop.IDockTopRecyclerViewAdapter;
 
 import java.util.ArrayList;
 
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  * Created by wanghui on 17-3-16.
  */
 
-public class TestGridListDemoAdapter extends RecyclerView.Adapter<GridSpannableItemViewHolder> {
+public class TestGridListDemoAdapter extends RecyclerView.Adapter<GridSpannableItemViewHolder> implements IDockTopRecyclerViewAdapter {
 
     public final static int VIEW_TYPE_SPLIT_1 = 0;
     public final static int VIEW_TYPE_SPLIT_2 = 1;
@@ -21,7 +22,7 @@ public class TestGridListDemoAdapter extends RecyclerView.Adapter<GridSpannableI
     public final static int VIEW_TYPE_CELL_2 = 3;
     public final static int VIEW_TYPE_CELL_HORIZON_LIST_INNER = 4;
 
-    private ArrayList<GridSpannableItemVM> mData;
+    private ArrayList<IGridItemViewModel> mData;
 
     private Context mContext;
 
@@ -29,7 +30,7 @@ public class TestGridListDemoAdapter extends RecyclerView.Adapter<GridSpannableI
         super();
         mContext = context;
         setHasStableIds(true);
-        mData = new ArrayList<GridSpannableItemVM>();
+        mData = new ArrayList<IGridItemViewModel>();
         gennerateDummyData();
     }
 
@@ -40,7 +41,7 @@ public class TestGridListDemoAdapter extends RecyclerView.Adapter<GridSpannableI
 
     @Override
     public int getItemViewType(int position) {
-        GridSpannableItemVM item = mData.get(position);
+        IGridItemViewModel item = mData.get(position);
         if (item instanceof TestSplit1ItemVM) {
             return VIEW_TYPE_SPLIT_1;
         } else if (item instanceof TestSplit2ItemVM) {
@@ -81,7 +82,7 @@ public class TestGridListDemoAdapter extends RecyclerView.Adapter<GridSpannableI
         return mData.size();
     }
 
-    public GridSpannableItemVM getItem(int pos) {
+    public IGridItemViewModel getItem(int pos) {
         if (pos < mData.size() && pos >= 0) {
             return mData.get(pos);
         } else {
@@ -91,157 +92,135 @@ public class TestGridListDemoAdapter extends RecyclerView.Adapter<GridSpannableI
 
     private void gennerateDummyData() {
         mData.add(new TestSplit1ItemVM("split 1"));
-        mData.add(new TestGroup1ItemVM("1", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("2", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("3", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("4", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("5", R.drawable.lenna));
+        mData.add(new TestGroup1ItemVM(new TestGroup1Item("1", R.drawable.lenna)));
+        mData.add(new TestGroup1ItemVM(new TestGroup1Item("2", R.drawable.lenna)));
+        mData.add(new TestGroup1ItemVM(new TestGroup1Item("3", R.drawable.lenna)));
+        mData.add(new TestGroup1ItemVM(new TestGroup1Item("4", R.drawable.lenna)));
+        mData.add(new TestGroup1ItemVM(new TestGroup1Item("5", R.drawable.lenna)));
+        TestSplit2ItemVM group2 = new TestSplit2ItemVM("split 2", "2 title");
+        mData.add(group2);
+        group2.addSubVM(new TestGroup2ItemVM(new TestGroup2Item("5", R.mipmap.ic_launcher)));
+        group2.addSubVM(new TestGroup2ItemVM(new TestGroup2Item("6", R.mipmap.ic_launcher)));
+        group2.addSubVM(new TestGroup2ItemVM(new TestGroup2Item("7", R.mipmap.ic_launcher)));
+        group2.addSubVM(new TestGroup2ItemVM(new TestGroup2Item("8", R.mipmap.ic_launcher)));
+        group2.addSubVM(new TestGroup2ItemVM(new TestGroup2Item("9", R.mipmap.ic_launcher)));
+        group2.addSubVM(new TestGroup2ItemVM(new TestGroup2Item("10", R.mipmap.ic_launcher)));
+        group2.addSubVM(new TestGroup2ItemVM(new TestGroup2Item("11", R.mipmap.ic_launcher)));
+        mData.addAll(group2.getSubVMs());
+        mData.add(new TestInnerHorizonListItemVM(null));
+        mData.add(new TestSplit1ItemVM("split 1"));
+        mData.add(new TestGroup1ItemVM(new TestGroup1Item("1", R.drawable.lenna)));
+        mData.add(new TestGroup1ItemVM(new TestGroup1Item("2", R.drawable.lenna)));
+        mData.add(new TestGroup1ItemVM(new TestGroup1Item("3", R.drawable.lenna)));
+        mData.add(new TestGroup1ItemVM(new TestGroup1Item("4", R.drawable.lenna)));
+        mData.add(new TestGroup1ItemVM(new TestGroup1Item("5", R.drawable.lenna)));
         mData.add(new TestSplit2ItemVM("split 2", "2 title"));
-        mData.add(new TestGroup2ItemVM("5", R.mipmap.ic_launcher));
-        mData.add(new TestGroup2ItemVM("6", R.mipmap.ic_launcher));
-        mData.add(new TestGroup2ItemVM("7", R.mipmap.ic_launcher));
-        mData.add(new TestGroup2ItemVM("8", R.mipmap.ic_launcher));
-        mData.add(new TestGroup2ItemVM("9", R.mipmap.ic_launcher));
-        mData.add(new TestInnerHorizonListItemVM());
+        mData.add(new TestGroup2ItemVM(new TestGroup2Item("5", R.mipmap.ic_launcher)));
+        mData.add(new TestGroup2ItemVM(new TestGroup2Item("6", R.mipmap.ic_launcher)));
+        mData.add(new TestGroup2ItemVM(new TestGroup2Item("7", R.mipmap.ic_launcher)));
+        mData.add(new TestGroup2ItemVM(new TestGroup2Item("8", R.mipmap.ic_launcher)));
+        mData.add(new TestGroup2ItemVM(new TestGroup2Item("9", R.mipmap.ic_launcher)));
+        mData.add(new TestInnerHorizonListItemVM(null));
         mData.add(new TestSplit1ItemVM("split 1"));
-        mData.add(new TestGroup1ItemVM("1", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("2", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("3", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("4", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("5", R.drawable.lenna));
-        mData.add(new TestSplit1ItemVM("split 1"));
-        mData.add(new TestGroup1ItemVM("1", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("2", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("3", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("4", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("5", R.drawable.lenna));
+        mData.add(new TestGroup1ItemVM(new TestGroup1Item("1", R.drawable.lenna)));
+        mData.add(new TestGroup1ItemVM(new TestGroup1Item("2", R.drawable.lenna)));
+        mData.add(new TestGroup1ItemVM(new TestGroup1Item("3", R.drawable.lenna)));
+        mData.add(new TestGroup1ItemVM(new TestGroup1Item("4", R.drawable.lenna)));
+        mData.add(new TestGroup1ItemVM(new TestGroup1Item("5", R.drawable.lenna)));
         mData.add(new TestSplit2ItemVM("split 2", "2 title"));
-        mData.add(new TestGroup2ItemVM("5", R.mipmap.ic_launcher));
-        mData.add(new TestGroup2ItemVM("6", R.mipmap.ic_launcher));
-        mData.add(new TestGroup2ItemVM("7", R.mipmap.ic_launcher));
-        mData.add(new TestGroup2ItemVM("8", R.mipmap.ic_launcher));
-        mData.add(new TestGroup2ItemVM("9", R.mipmap.ic_launcher));
-        mData.add(new TestInnerHorizonListItemVM());
+        mData.add(new TestGroup2ItemVM(new TestGroup2Item("5", R.mipmap.ic_launcher)));
+        mData.add(new TestGroup2ItemVM(new TestGroup2Item("6", R.mipmap.ic_launcher)));
+        mData.add(new TestGroup2ItemVM(new TestGroup2Item("7", R.mipmap.ic_launcher)));
+        mData.add(new TestGroup2ItemVM(new TestGroup2Item("8", R.mipmap.ic_launcher)));
+        mData.add(new TestGroup2ItemVM(new TestGroup2Item("9", R.mipmap.ic_launcher)));
+        mData.add(new TestInnerHorizonListItemVM(null));
         mData.add(new TestSplit1ItemVM("split 1"));
-        mData.add(new TestGroup1ItemVM("1", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("2", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("3", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("4", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("5", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("1", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("2", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("3", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("4", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("5", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("1", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("2", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("3", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("4", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("5", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("1", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("2", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("3", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("4", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("5", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("1", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("2", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("3", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("4", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("5", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("1", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("2", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("3", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("4", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("5", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("1", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("2", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("3", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("4", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("5", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("4", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("5", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("1", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("2", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("3", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("4", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("5", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("1", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("2", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("3", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("4", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("5", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("1", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("2", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("3", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("4", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("5", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("1", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("2", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("3", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("4", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("5", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("1", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("2", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("3", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("4", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("5", R.drawable.lenna));
+        mData.add(new TestGroup1ItemVM(new TestGroup1Item("1", R.drawable.lenna)));
+        mData.add(new TestGroup1ItemVM(new TestGroup1Item("2", R.drawable.lenna)));
+        mData.add(new TestGroup1ItemVM(new TestGroup1Item("3", R.drawable.lenna)));
+        mData.add(new TestGroup1ItemVM(new TestGroup1Item("4", R.drawable.lenna)));
+        mData.add(new TestGroup1ItemVM(new TestGroup1Item("5", R.drawable.lenna)));
+        mData.add(new TestSplit2ItemVM("split 2", "2 title"));
+        mData.add(new TestGroup2ItemVM(new TestGroup2Item("5", R.mipmap.ic_launcher)));
+        mData.add(new TestGroup2ItemVM(new TestGroup2Item("6", R.mipmap.ic_launcher)));
+        mData.add(new TestGroup2ItemVM(new TestGroup2Item("7", R.mipmap.ic_launcher)));
+        mData.add(new TestGroup2ItemVM(new TestGroup2Item("8", R.mipmap.ic_launcher)));
+        mData.add(new TestGroup2ItemVM(new TestGroup2Item("9", R.mipmap.ic_launcher)));
+        mData.add(new TestInnerHorizonListItemVM(null));
+        mData.add(new TestSplit1ItemVM("split 1"));
+        mData.add(new TestGroup1ItemVM(new TestGroup1Item("1", R.drawable.lenna)));
+        mData.add(new TestGroup1ItemVM(new TestGroup1Item("2", R.drawable.lenna)));
+        mData.add(new TestGroup1ItemVM(new TestGroup1Item("3", R.drawable.lenna)));
+        mData.add(new TestGroup1ItemVM(new TestGroup1Item("4", R.drawable.lenna)));
+        mData.add(new TestGroup1ItemVM(new TestGroup1Item("5", R.drawable.lenna)));
+        mData.add(new TestSplit2ItemVM("split 2", "2 title"));
+        mData.add(new TestGroup2ItemVM(new TestGroup2Item("5", R.mipmap.ic_launcher)));
+        mData.add(new TestGroup2ItemVM(new TestGroup2Item("6", R.mipmap.ic_launcher)));
+        mData.add(new TestGroup2ItemVM(new TestGroup2Item("7", R.mipmap.ic_launcher)));
+        mData.add(new TestGroup2ItemVM(new TestGroup2Item("8", R.mipmap.ic_launcher)));
+        mData.add(new TestGroup2ItemVM(new TestGroup2Item("9", R.mipmap.ic_launcher)));
+        mData.add(new TestInnerHorizonListItemVM(null));
 
-        mData.add(new TestGroup1ItemVM("4", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("5", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("1", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("2", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("3", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("4", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("5", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("1", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("2", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("3", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("4", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("5", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("1", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("2", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("3", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("4", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("5", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("1", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("2", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("3", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("4", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("5", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("1", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("2", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("3", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("4", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("5", R.drawable.lenna));
+    }
 
-        mData.add(new TestGroup1ItemVM("4", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("5", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("1", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("2", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("3", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("4", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("5", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("1", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("2", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("3", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("4", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("5", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("1", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("2", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("3", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("4", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("5", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("1", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("2", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("3", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("4", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("5", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("1", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("2", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("3", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("4", R.drawable.lenna));
-        mData.add(new TestGroup1ItemVM("5", R.drawable.lenna));
+    @Override
+    public boolean isDockAtPos(int pos) {
+        if (pos < mData.size()) {
+            return isDockHeaderItemViewModel(mData.get(pos));
+        }
+        return false;
+    }
 
+    @Override
+    public int findCurrentDockItemPosInclude(int pos) {
+        if (pos < mData.size()) {
+            int i = pos;
+            while (i >= 0) {
+                if (isDockHeaderItemViewModel(mData.get(i))) {
+                    return i;
+                }
+                --i;
+            }
+        }
+        return 0;
+    }
+
+    @Override
+    public int findNextDockItemPosExclude(int pos) {
+        if (pos < mData.size()) {
+            int i = pos + 1;
+            while (i < mData.size()) {
+                if (isDockHeaderItemViewModel(mData.get(i))) {
+                    return i;
+                }
+                ++i;
+            }
+        }
+        return 0;
+    }
+
+    private boolean isDockHeaderItemViewModel(IGridItemViewModel vm) {
+        return vm instanceof GridSpannableHeaderDockItemVM;
+    }
+
+    @Override
+    public RecyclerView.ViewHolder onCreateDockForPos(ViewGroup dockWrapper, int pos) {
+        if (pos < mData.size()) {
+            if (mData.get(pos) instanceof TestSplit1ItemVM) {
+                return onCreateViewHolder(dockWrapper, VIEW_TYPE_SPLIT_1);
+            } else if (mData.get(pos) instanceof TestSplit2ItemVM) {
+                return onCreateViewHolder(dockWrapper, VIEW_TYPE_SPLIT_2);
+            } else {
+                // empty
+            }
+        } else {
+            // empty
+        }
+        return onCreateViewHolder(dockWrapper, VIEW_TYPE_SPLIT_1);
+    }
+
+    @Override
+    public void onBindDockViewHolder(RecyclerView.ViewHolder vh) {
 
     }
 }
