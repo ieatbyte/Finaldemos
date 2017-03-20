@@ -65,9 +65,9 @@
         <activity android:name=".demos.androidviews.AndroidViewDemosActivity" />
         <activity android:name=".demos.androidviews.NestedScrollView.NestedScrollViewDemosActivity" />
         <activity android:name=".demos.androidviews.NestedScrollView.simpleuse.NestedScrollViewSimpeUseDemoActivity" />
-        <activity android:name=".demos.androidviews.RecycleView.RecycleViewDemosActivity" />
-        <activity android:name=".demos.androidviews.RecycleView.simpleuse.RecycleViewSimpleUseActivity" />
-        <activity android:name=".demos.androidviews.RecycleView.imageslider.ImageSliderDemoActivity" />
+        <activity android:name=".demos.androidviews.recycleview.RecycleViewDemosActivity" />
+        <activity android:name=".demos.androidviews.recycleview.simpleuse.RecycleViewSimpleUseActivity" />
+        <activity android:name=".demos.androidviews.recycleview.imageslider.ImageSliderDemoActivity" />
         <activity android:name=".demos.androidviews.CoordinatorLayout.CoordinatorLayoutDemosActivity" />
         <activity android:name=".demos.androidviews.CoordinatorLayout.custombehavior.CustomBehaviorActivity" />
         <activity android:name=".demos.androidviews.CoordinatorLayout.customcoordinator.CustomCoordinatorActivity" />
@@ -108,7 +108,7 @@
         <activity
             android:name=".demos.customview.highlightguide.HightlightGuideDemoActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".demos.androidviews.RecycleView.collapsable.CollapseableDemoActivity" />
+        <activity android:name=".demos.androidviews.recycleview.collapsable.CollapseableDemoActivity" />
         <activity android:name=".demos.otherlibs.butterknife.ButterKnifeDemoActivity" />
         <activity android:name=".demos.otherlibs.OtherLibsDemosListActivity" />
         <activity android:name=".demos.otherlibs.retrofit.RetrofitDemoActivity" />
@@ -148,7 +148,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".demos.system.SystemDemosActivity" />
         </activity>
-        <activity android:name=".demos.textshow.autolink.AutoLinkDemoActivity"></activity>
+        <activity android:name=".demos.textshow.autolink.AutoLinkDemoActivity" />
+        <activity
+            android:name=".demos.androidviews.recycleview.complexgrid.ComplexGridDemoActivity"
+            android:label="@string/title_activity_complex_grid_demo"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".demos.androidviews.recycleview.superslim.SuperSLiMDemoActivity"
+            android:label="@string/title_activity_super_sli_mdemo"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

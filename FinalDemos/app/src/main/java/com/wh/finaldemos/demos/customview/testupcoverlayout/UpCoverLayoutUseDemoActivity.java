@@ -17,8 +17,8 @@ import android.widget.Toast;
 import com.wh.finaldemos.BaseDemoActivity;
 import com.wh.finaldemos.R;
 import com.wh.finaldemos.Utils;
-import com.wh.finaldemos.demos.androidviews.RecycleView.adapters.SimpleAdapter;
-import com.wh.finaldemos.demos.androidviews.RecycleView.decorations.SimpleDecoration;
+import com.wh.finaldemos.demos.androidviews.recycleview.adapters.SimpleAdapter;
+import com.wh.finaldemos.demos.androidviews.recycleview.decorations.SimpleDecoration;
 import com.whlib.alib.Log.XLog;
 
 import java.io.IOException;

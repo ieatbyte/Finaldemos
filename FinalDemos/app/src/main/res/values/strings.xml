@@ -7,4 +7,6 @@
     <string name="title_activity_surface_view_play_mp4_demo">SurfaceViewPlayMp4DemoActivity</string>
     <string name="title_activity_texture_view_play_mp4">TextureViewPlayMp4Activity</string>
     <string name="title_activity_green_daodemo">GreenDAODemoActivity</string>
+    <string name="title_activity_complex_grid_demo">ComplexGridDemoActivity</string>
+    <string name="title_activity_super_sli_mdemo">SuperSLiMDemoActivity</string>
 </resources>

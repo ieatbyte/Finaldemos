@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 /**
  * Created by wanghui5-s on 2015/11/26.
  */
+// TODO will slow ui response when scroll in recyclerview with many instances
 public class CircelImageView extends CustomShapeImageView {
 
     public CircelImageView(Context context) {

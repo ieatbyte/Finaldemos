@@ -3,7 +3,7 @@ package com.wh.finaldemos.demos.androidviews;
 import com.wh.finaldemos.DemoGroup;
 import com.wh.finaldemos.demos.androidviews.CoordinatorLayout.CoordinatorLayoutDemos;
 import com.wh.finaldemos.demos.androidviews.NestedScrollView.NestedScrollViewDemos;
-import com.wh.finaldemos.demos.androidviews.RecycleView.RecyleViewDemos;
+import com.wh.finaldemos.demos.androidviews.recycleview.RecyleViewDemos;
 import com.wh.finaldemos.demos.androidviews.popupwindow.PopupWindowDemo;
 
 /**
