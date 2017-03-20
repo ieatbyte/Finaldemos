@@ -1,4 +1,4 @@
-package com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.docktop;
+package com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.docktoprecyclerview;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,11 +17,11 @@ public class RecyclerViewDockTopHelper {
 
     private FrameLayout mDockItemViewWrapper;
 
-    private IDockTopRecyclerViewAdapter mIDockTopRecyclerViewAdapter;
+    private IDockTopRecyclerViewAdapterContract mIDockTopRecyclerViewAdapter;
 
     private RecyclerView mRecyclerView;
 
-    public RecyclerViewDockTopHelper(RecyclerView recyclerView, IDockTopRecyclerViewAdapter iDockTopRecyclerViewAdapter) {
+    public RecyclerViewDockTopHelper(RecyclerView recyclerView, IDockTopRecyclerViewAdapterContract iDockTopRecyclerViewAdapter) {
         mRecyclerView = recyclerView;
         if (!(iDockTopRecyclerViewAdapter instanceof RecyclerView.Adapter)) {
             throw new IllegalArgumentException("Need adapter to be RecyclerView.Adapter type");
@@ -34,7 +34,7 @@ public class RecyclerViewDockTopHelper {
         mDockTopEnabled = true;
         mDockItemViewWrapper = wrapper;
         mDockItemViewWrapper.setVisibility(View.INVISIBLE);
-        mDockItemViewWrapper.setTag(-1);
+        mDockItemViewWrapper.setTag(RecyclerView.NO_POSITION);
     }
 
     public View getDockViewWrapper() {
@@ -85,11 +85,11 @@ public class RecyclerViewDockTopHelper {
             return;
         }
         Log.e("DockTopRecyclerView", "DockItemRecyclerView, onScrolled checkAndFixDock topItemPos:" + topItemPos);
-        if (mIDockTopRecyclerViewAdapter.isDockAtPos(topItemPos)) {
+        if (mIDockTopRecyclerViewAdapter.isDockItemAtPosition(topItemPos)) {
             showDockForItem(topItemPos);
             fixPosByNextDockItem(topItemPos);
         } else {
-            int currentDockPos = mIDockTopRecyclerViewAdapter.findCurrentDockItemPosInclude(topItemPos);
+            int currentDockPos = mIDockTopRecyclerViewAdapter.findCurrentDockItemPositionInclude(topItemPos);
             if (currentDockPos >= 0) {
                 showDockForItem(currentDockPos);
                 fixPosByNextDockItem(topItemPos);
@@ -137,7 +137,7 @@ public class RecyclerViewDockTopHelper {
             }
         }
         Log.e("DockTopRecyclerView", "DockItemRecyclerView, showDockForItem pos:" + pos + ", and add view");
-        final RecyclerView.ViewHolder vh = mIDockTopRecyclerViewAdapter.onCreateDockForPos(mDockItemViewWrapper, pos);
+        final RecyclerView.ViewHolder vh = mIDockTopRecyclerViewAdapter.onCreateDockForPosition(mDockItemViewWrapper, pos);
         ((RecyclerView.Adapter)mIDockTopRecyclerViewAdapter).onBindViewHolder(vh, pos);
         mDockItemViewWrapper.setVisibility(View.VISIBLE);
         mDockItemViewWrapper.removeAllViews();
@@ -161,7 +161,7 @@ public class RecyclerViewDockTopHelper {
         Log.e("DockTopRecyclerView", "DockItemRecyclerView, fixPosByNextDockItem currentPos:" + currentPos);
         int dockViewBottom = mDockItemViewWrapper.getTop() + mDockItemViewWrapper.getMeasuredHeight();
         LinearLayoutManager layoutManager = (LinearLayoutManager) mRecyclerView.getLayoutManager();
-        int nextDockItemPos = mIDockTopRecyclerViewAdapter.findNextDockItemPosExclude(currentPos);
+        int nextDockItemPos = mIDockTopRecyclerViewAdapter.findNextDockItemPositionExclude(currentPos);
         Log.e("DockTopRecyclerView", "DockItemRecyclerView, fixPosByNextDockItem currentPos:" + currentPos + ", nextDockItemPos:" + nextDockItemPos + ", currentY:" + mDockItemViewWrapper.getY() + ", dockViewBottom:" + dockViewBottom);
         if (nextDockItemPos != RecyclerView.NO_POSITION) {
             View nextCollapsableItemView = layoutManager.findViewByPosition(nextDockItemPos);

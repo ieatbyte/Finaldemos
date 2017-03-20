@@ -1,16 +1,18 @@
-package com.wh.finaldemos.demos.androidviews.recycleview.complexgrid;
+package com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.group2;
+
+import com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.main.GridListGroupItemVM;
 
 /**
  * Created by wanghui on 17-3-16.
  */
 
-public class TestSplit2ItemVM extends GridSpannableSplitItemVM {
+public class TestGroup2ItemVM extends GridListGroupItemVM {
 
     private String title1;
 
     private String title2;
 
-    public TestSplit2ItemVM(String title1, String title2) {
+    public TestGroup2ItemVM(String title1, String title2) {
         super(null);
         this.title1 = title1;
         this.title2 = title2;

@@ -1,4 +1,4 @@
-package com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.docktop;
+package com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.docktoprecyclerview;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -10,13 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+// deprecated, use RecyclerViewDockTopHelper instead
 public class DockTopRecyclerView extends RecyclerView {
 
     private boolean mDockTopEnabled = false;
 
     private FrameLayout mDockItemViewWrapper;
 
-    private IDockTopRecyclerViewAdapter mIDockTopRecyclerViewAdapter;
+    private IDockTopRecyclerViewAdapterContract mIDockTopRecyclerViewAdapter;
 
     public DockTopRecyclerView(Context context) {
         super(context);
@@ -58,8 +59,8 @@ public class DockTopRecyclerView extends RecyclerView {
     @Override
     public void setAdapter(Adapter adapter) {
         super.setAdapter(adapter);
-        if (adapter instanceof IDockTopRecyclerViewAdapter) {
-            mIDockTopRecyclerViewAdapter = (IDockTopRecyclerViewAdapter) adapter;
+        if (adapter instanceof IDockTopRecyclerViewAdapterContract) {
+            mIDockTopRecyclerViewAdapter = (IDockTopRecyclerViewAdapterContract) adapter;
         } else {
             throw new IllegalArgumentException("Need adapter to be IDockTopRecyclerViewAdapter type");
         }
@@ -129,7 +130,7 @@ public class DockTopRecyclerView extends RecyclerView {
         }
         Log.e("DockTopRecyclerView", "DockItemRecyclerView, showDockForItem pos:" + pos + ", and add view");
         //final ViewHolder vh = getAdapter().onCreateViewHolder(mDockItemViewWrapper, FNExpandableRVAdapter.VIEW_TYPE_EXPANDABLE_DAY);
-        final ViewHolder vh = mIDockTopRecyclerViewAdapter.onCreateDockForPos(mDockItemViewWrapper, pos);
+        final ViewHolder vh = mIDockTopRecyclerViewAdapter.onCreateDockForPosition(mDockItemViewWrapper, pos);
         ((RecyclerView.Adapter)mIDockTopRecyclerViewAdapter).onBindViewHolder(vh, pos);
         mDockItemViewWrapper.setVisibility(View.VISIBLE);
         mDockItemViewWrapper.removeAllViews();
@@ -172,7 +173,7 @@ public class DockTopRecyclerView extends RecyclerView {
         Log.e("DockTopRecyclerView", "DockItemRecyclerView, fixPosByNextCollapsable currentPos:" + currentPos);
         int dockViewBottom = mDockItemViewWrapper.getTop() + mDockItemViewWrapper.getMeasuredHeight();
         LinearLayoutManager layoutManager = (LinearLayoutManager) getLayoutManager();
-        int nextCollapsableItemPos = mIDockTopRecyclerViewAdapter.findNextDockItemPosExclude(currentPos);
+        int nextCollapsableItemPos = mIDockTopRecyclerViewAdapter.findNextDockItemPositionExclude(currentPos);
         Log.e("DockTopRecyclerView", "DockItemRecyclerView, fixPosByNextCollapsable currentPos:" + currentPos + ", nextCollapsableItemPos:" + nextCollapsableItemPos + ", currentY:" + mDockItemViewWrapper.getY() + ", dockViewBottom:" + dockViewBottom);
         if (nextCollapsableItemPos != NO_POSITION) {
             View nextCollapsableItemView = layoutManager.findViewByPosition(nextCollapsableItemPos);
@@ -206,13 +207,13 @@ public class DockTopRecyclerView extends RecyclerView {
         Log.e("DockTopRecyclerView", "DockItemRecyclerView, onScrolled checkAndFixDock topItemPos:" + topItemPos);
 
         // if top item changed and is collapsable item
-        if (mIDockTopRecyclerViewAdapter.isDockAtPos(topItemPos)) {
+        if (mIDockTopRecyclerViewAdapter.isDockItemAtPosition(topItemPos)) {
                 showDockForItem(topItemPos);
                 fixPosByNextCollapsable(topItemPos);
         } else {
             // is collapsed item
             // top is collapsed, next is collapsable item, dock to this collapsed item y
-            int prevCollapsablePos = mIDockTopRecyclerViewAdapter.findCurrentDockItemPosInclude(topItemPos);
+            int prevCollapsablePos = mIDockTopRecyclerViewAdapter.findCurrentDockItemPositionInclude(topItemPos);
             if (prevCollapsablePos >= 0) {
                 showDockForItem(prevCollapsablePos);
                 fixPosByNextCollapsable(topItemPos);

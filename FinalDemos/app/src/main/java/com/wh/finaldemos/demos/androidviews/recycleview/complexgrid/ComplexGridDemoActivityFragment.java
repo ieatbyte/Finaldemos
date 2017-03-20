@@ -10,7 +10,8 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.wh.finaldemos.R;
-import com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.docktop.RecyclerViewDockTopHelper;
+import com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.docktoprecyclerview.RecyclerViewDockTopHelper;
+import com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.main.TestGridListDemoAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

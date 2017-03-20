@@ -1,4 +1,4 @@
-package com.wh.finaldemos.demos.androidviews.recycleview.complexgrid;
+package com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.main;
 
 /**
  * Created by wanghui on 17-3-20.

@@ -1,4 +1,4 @@
-package com.wh.finaldemos.demos.androidviews.recycleview.complexgrid;
+package com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.innerhorizenlist;
 
 import android.os.Parcelable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,6 +8,8 @@ import android.view.View;
 
 import com.wh.finaldemos.R;
 import com.wh.finaldemos.demos.androidviews.recycleview.adapters.SimpleAdapter;
+import com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.main.GridListItemViewHolder;
+import com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.main.IGridListAdapterContract;
 
 import butterknife.BindView;
 
@@ -16,15 +18,15 @@ import butterknife.BindView;
  */
 
 // TODO save layoutmanager instance and restore out of item data model structure
-public class TestInnerHorizonListItemViewHolder extends GridSpannableItemViewHolder<TestInnerHorizonListItemVM> {
+public class TestInnerHorizonListItemViewHolder extends GridListItemViewHolder<TestInnerHorizonListItemVM> {
 
     @BindView(R.id.inner_list)
     RecyclerView innerListView;
 
     TestInnerHorizonListItemVM currentRealItem;
 
-    public TestInnerHorizonListItemViewHolder(View itemView) {
-        super(itemView);
+    public TestInnerHorizonListItemViewHolder(View itemView, IGridListAdapterContract adapter) {
+        super(itemView, adapter);
         mItemView.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
             @Override
             public void onViewAttachedToWindow(View view) {

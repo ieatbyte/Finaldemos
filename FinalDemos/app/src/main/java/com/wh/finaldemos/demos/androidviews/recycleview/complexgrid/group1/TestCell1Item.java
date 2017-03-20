@@ -1,16 +1,18 @@
-package com.wh.finaldemos.demos.androidviews.recycleview.complexgrid;
+package com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.group1;
+
+import com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.main.BaseGridListItem;
 
 /**
  * Created by wanghui on 17-3-20.
  */
 
-public class TestGroup1Item extends BaseGridListItem {
+public class TestCell1Item extends BaseGridListItem {
 
     private String title;
 
     private int iconDrawableId;
 
-    public TestGroup1Item(String title, int iconDrawableId) {
+    public TestCell1Item(String title, int iconDrawableId) {
         this.title = title;
         this.iconDrawableId = iconDrawableId;
     }

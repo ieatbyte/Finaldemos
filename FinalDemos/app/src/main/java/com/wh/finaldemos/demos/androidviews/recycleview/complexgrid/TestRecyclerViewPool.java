@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
  * Created by wanghui on 17-3-17.
  */
 
+// invalid
 public class TestRecyclerViewPool extends RecyclerView.RecycledViewPool {
 
 //    LongSparseArray<TestInnerHorizonListItemViewHolder> horizonListScraps;
