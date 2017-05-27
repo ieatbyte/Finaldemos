@@ -12,6 +12,7 @@ import com.wh.finaldemos.BaseDemoActivity;
 import com.wh.finaldemos.R;
 
 import java.lang.reflect.Field;
+import java.util.Locale;
 
 public class SysInfoShowActivity extends BaseDemoActivity {
 
@@ -25,6 +26,7 @@ public class SysInfoShowActivity extends BaseDemoActivity {
 
     private String buildSysInfo() {
         StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("locale:" + Locale.getDefault().getCountry() + ", " + Locale.getDefault().toString().substring(Locale.getDefault().toString().indexOf("#")) + ", CHINA:" + Locale.CHINA.getCountry() + "\n");
         stringBuilder.append("wifi info:" + getBSSID());
         stringBuilder.append("androidVersionCode=" + Build.VERSION.SDK_INT + "\n\n");
         Field[] fields = Build.class.getDeclaredFields();

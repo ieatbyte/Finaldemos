@@ -4,6 +4,8 @@ import android.content.Context;
 import android.net.Uri;
 import android.util.DisplayMetrics;
 
+import java.util.Locale;
+
 /**
  * Created by wanghui5-s on 2015/12/7.
  * <p/>
@@ -28,4 +30,16 @@ public class Utils {
             "http://f.hiphotos.baidu.com/image/h%3D200/sign=1478eb74d5a20cf45990f9df460b4b0c/d058ccbf6c81800a5422e5fdb43533fa838b4779.jpg",
             "http://f.hiphotos.baidu.com/image/pic/item/09fa513d269759ee50f1971ab6fb43166c22dfba.jpg"
     };
+
+    public static boolean checkIsSimplifiedChinese(Locale locale) {
+        Locale currentLocale = Locale.getDefault();
+        String localeString = locale.toString();
+        if (localeString.contains("#")) {
+            String variantString = localeString.substring(localeString.indexOf("#"));
+        } else {
+            return locale.equals(Locale.SIMPLIFIED_CHINESE);
+        }
+
+        return false;
+    }
 }

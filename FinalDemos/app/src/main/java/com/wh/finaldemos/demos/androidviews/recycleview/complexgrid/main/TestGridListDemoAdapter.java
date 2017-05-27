@@ -6,28 +6,24 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.wh.finaldemos.R;
-import com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.docktoprecyclerview.IDockTopRecyclerViewAdapterContract;
-import com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.group1.TestCell1ItemViewHolder;
 import com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.group1.TestCell1Item;
 import com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.group1.TestCell1ItemVM;
+import com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.group1.TestCell1ItemViewHolder;
 import com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.group1.TestGroup1ItemVM;
 import com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.group1.TestGroup1ItemViewHolder;
-import com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.group2.TestCell2ItemViewHolder;
 import com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.group2.TestCell2Item;
 import com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.group2.TestCell2ItemVM;
+import com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.group2.TestCell2ItemViewHolder;
 import com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.group2.TestGroup2ItemVM;
 import com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.group2.TestGroup2ItemViewHolder;
 import com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.innerhorizenlist.TestInnerHorizonListItemVM;
 import com.wh.finaldemos.demos.androidviews.recycleview.complexgrid.innerhorizenlist.TestInnerHorizonListItemViewHolder;
 
-import java.util.ArrayList;
-
 /**
  * Created by wanghui on 17-3-16.
  */
 
-public class TestGridListDemoAdapter extends RecyclerView.Adapter<GridListItemViewHolder> implements IDockTopRecyclerViewAdapterContract,
-        IGridListAdapterContract{
+public class TestGridListDemoAdapter extends BaseGridListAdapter{
 
     public final static int VIEW_TYPE_SPLIT_1 = 0;
     public final static int VIEW_TYPE_SPLIT_2 = 1;
@@ -35,21 +31,9 @@ public class TestGridListDemoAdapter extends RecyclerView.Adapter<GridListItemVi
     public final static int VIEW_TYPE_CELL_2 = 3;
     public final static int VIEW_TYPE_CELL_HORIZON_LIST_INNER = 4;
 
-    private ArrayList<IGridListItemViewModel> mData;
-
-    private Context mContext;
-
     public TestGridListDemoAdapter(Context context) {
-        super();
-        mContext = context;
-        setHasStableIds(true);
-        mData = new ArrayList<IGridListItemViewModel>();
+        super(context);
         gennerateDummyData();
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return mData.get(position).getItemId();
     }
 
     @Override
@@ -83,24 +67,6 @@ public class TestGridListDemoAdapter extends RecyclerView.Adapter<GridListItemVi
             return new TestInnerHorizonListItemViewHolder(LayoutInflater.from(mContext).inflate(R.layout.complex_grid_inner_list_item_layout, parent, false), this);
         }
         return null;
-    }
-
-    @Override
-    public void onBindViewHolder(GridListItemViewHolder holder, int position) {
-        holder.bind(mData.get(position));
-    }
-
-    @Override
-    public int getItemCount() {
-        return mData.size();
-    }
-
-    public IGridListItemViewModel getItem(int pos) {
-        if (pos < mData.size() && pos >= 0) {
-            return mData.get(pos);
-        } else {
-            return null;
-        }
     }
 
     private void gennerateDummyData() {
@@ -174,66 +140,6 @@ public class TestGridListDemoAdapter extends RecyclerView.Adapter<GridListItemVi
         mData.add(new TestCell2ItemVM(new TestCell2Item("9", R.mipmap.ic_launcher)));
         mData.add(new TestInnerHorizonListItemVM(null));
 
-    }
-
-    @Override
-    public void removeItems(ArrayList<IGridListItemViewModel> vmsToRemove) {
-        mData.removeAll(vmsToRemove);
-        notifyDataSetChanged();
-    }
-
-    @Override
-    public void removeGroupSubItemVMs(GridListGroupItemVM groupVM) {
-        mData.removeAll(groupVM.getSubVMs());
-        notifyDataSetChanged();
-    }
-
-    @Override
-    public void addGroupSubItemVMs(GridListGroupItemVM groupVM) {
-        if (mData.contains(groupVM) && groupVM.getSubVMs().size() > 0 && !mData.containsAll(groupVM.getSubVMs())) {
-            mData.addAll(mData.indexOf(groupVM) + 1, groupVM.getSubVMs());
-            notifyDataSetChanged();
-        }
-    }
-
-    @Override
-    public boolean isDockItemAtPosition(int position) {
-        if (position < mData.size()) {
-            return isDockHeaderItemViewModel(mData.get(position));
-        }
-        return false;
-    }
-
-    @Override
-    public int findCurrentDockItemPositionInclude(int position) {
-        if (position < mData.size()) {
-            int i = position;
-            while (i >= 0) {
-                if (isDockHeaderItemViewModel(mData.get(i))) {
-                    return i;
-                }
-                --i;
-            }
-        }
-        return 0;
-    }
-
-    @Override
-    public int findNextDockItemPositionExclude(int position) {
-        if (position < mData.size()) {
-            int i = position + 1;
-            while (i < mData.size()) {
-                if (isDockHeaderItemViewModel(mData.get(i))) {
-                    return i;
-                }
-                ++i;
-            }
-        }
-        return 0;
-    }
-
-    private boolean isDockHeaderItemViewModel(IGridListItemViewModel vm) {
-        return vm instanceof GridListHeaderDockItemVM;
     }
 
     @Override
